@@ -1,55 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" 
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="
-      http://www.springframework.org/schema/beans 
-      http://www.springframework.org/schema/beans/spring-beans.xsd
-      http://www.springframework.org/schema/context 
-      http://www.springframework.org/schema/context/spring-context.xsd
-      http://www.springframework.org/schema/mvc
-      http://www.springframework.org/schema/mvc/spring-mvc.xsd
-      http://www.springframework.org/schema/tx
-      http://www.springframework.org/schema/tx/spring-tx.xsd">
+      xmlns:context="http://www.springframework.org/schema/context"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+        http://www.springframework.org/schema/beans    
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/context/mvc
+        http://www.springframework.org/schema/context/spring-mvc.xsd
+        http://www.springframework.org/schema/context/tx
+        http://www.springframework.org/schema/context/spring-tx.xsd">
 
-	<context:component-scan base-package="com.dell.cdstack1" />
-	<mvc:annotation-driven></mvc:annotation-driven>
-	<context:annotation-config></context:annotation-config>
 
-	<tx:annotation-driven transaction-manager="hibernateTransactionManager"></tx:annotation-driven>
-
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.h2.Driver" />
-		<property name="url" value="jdbc:h2:tcp://localhost/~/test" />
+		<property name="url" value="jdbc:h2:tcp://localhost/~/cdstack" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>
 
-
-	<bean id="sessionFactory"
+      <context:component-scan base-package="com.niit.cdstack" />
+      <bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan">
 			<list>
-				<value>com.dell.cdstack1</value>
+				<value>com.niit.cdstack.model</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+				<prop key="hibernate.dialect"> org.hibernate.dialect.H2Dialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">false</prop>
-				<prop key="hibernate.generate_statistics">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_comments">true</prop>
+
 			</props>
-		</property>
-	</bean>
-
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-</beans>  
+			</property>
+			
+			
+</bean>
+</beans>
