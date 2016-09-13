@@ -10,11 +10,13 @@ input[type=text] {
 label {
 	color: navy;
 }
+
 </style>
 <body>
 	<%@include file="header.jsp"%>
 	<div class="container">
-		<p align="center" style="font-size: 25px; color: maroon;">${msg}</p>
+		<div class="aler alert-danger"><center><strong style="font-size: 25px">${msge}</strong></center></div>
+		<div class="aler alert-success"><center><strong style="font-size: 25px">${msgc}</strong></center></div>
 		<h1 style="color: navy;" align="center">ADD PRODUCTS</h1>
 		<br> <br>
 
@@ -57,6 +59,11 @@ label {
 			<form:errors path="price" cssStyle="color:black"></form:errors>
 			<br>
 
+			<form:label path="content" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">Description</form:label>
+			<form:textarea path="content" cssClass="form-control" rows="5" cols="30"/>
+			<form:errors path="content" cssStyle="color:black"></form:errors>
+			<br>
 			<div class="container text-center">
 				<button class="btn btn-primary" type="submit"
 					style="margin-right: 20px; font-size: 25px">Submit</button>

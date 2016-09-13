@@ -57,6 +57,11 @@ label {
 			<form:errors path="price" cssStyle="color:black"></form:errors>
 			<br>
 
+			<form:label path="content" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">Description</form:label>
+			<form:textarea path="content" cssClass="form-control" rows="5" cols="30"/>
+			<form:errors path="content" cssStyle="color:black"></form:errors>
+			<br>
 			<div class="container text-center">
 				<button class="btn btn-primary" type="submit"
 					style="margin-right: 20px; font-size: 25px">Submit</button>

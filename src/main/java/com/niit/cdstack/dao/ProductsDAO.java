@@ -9,5 +9,7 @@ import com.niit.cdstack.model.*;
 public interface ProductsDAO {
 	void addProduct(Products p);
 	List<Products> getAllProducts();
-	
+	Products getProductById(int id);
+	void deleteProduct(int id);
+	void updateProduct(Products p);
 }

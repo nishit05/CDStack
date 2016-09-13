@@ -2,6 +2,7 @@ package com.niit.cdstack.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,7 @@ public class Products implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)	
 	private int pid;
 
-
+	
 	private int qty;
 	
 	
@@ -26,6 +27,17 @@ public class Products implements Serializable {
 
 	
 	private float price;
+
+	@Column(name="Description",length=800)
+	private String content;
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public int getPid() {
 		return pid;

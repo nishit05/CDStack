@@ -78,7 +78,7 @@ h5 {
 				<li><a href="/CDStack"><span class="glyphicon glyphicon-home"></span>HOME</a></li>
 				<li><a href="aboutus">ABOUT US</a></li>
 				<li><a href="contact">CONTACT US</a></li>
-				<!--  <li><a href="products">VIEW PRODUCTS</a></li>-->
+				<li><a href="products">VIEW PRODUCTS</a></li>
 				<li><a href="productform">ADD PRODUCTS</a></li>
 			</ul>
 
