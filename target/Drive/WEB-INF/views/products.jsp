@@ -15,6 +15,7 @@
 		<th>ID</th>
 		<th>NAME</th>
 		<th>CATEGORY</th>
+		<th>CD-TYPE</th>
 		<th>QTY</th>
 		<th>PRICE</th>
 		<th>PRODUCT MANIPULATION</th>
@@ -26,6 +27,7 @@
 		<tr>
 		<td>${prod.pid}</td>
 		<td>${prod.pname}</td>
+		<td>${prod.category}</td>
 		<td>${prod.ptype}</td>
 		<td>${prod.qty}</td>
 		<td>${prod.price}</td>

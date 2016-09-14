@@ -10,11 +10,13 @@ input[type=text] {
 label {
 	color: navy;
 }
+
 </style>
 <body>
 	<%@include file="header.jsp"%>
 	<div class="container">
-		<p align="center" style="font-size: 25px; color: maroon;">${msg}</p>
+		<div class="aler alert-danger"><center><strong style="font-size: 25px">${msge}</strong></center></div>
+		<div class="aler alert-success"><center><strong style="font-size: 25px">${msgc}</strong></center></div>
 		<h1 style="color: navy;" align="center">ADD PRODUCTS</h1>
 		<br> <br>
 
@@ -34,8 +36,19 @@ label {
 			<form:errors path="pname" cssStyle="color:black"></form:errors>
 			<br>
 
-			<form:label path="ptype" cssClass="control-label col-sm-4"
+			<form:label path="category" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Category</form:label>
+			<form:select path="category" cssClass="form-control"
+				cssStyle="width:60%">
+				<form:option value="Select Option"></form:option>
+				<form:option value="HOLLYWOOD"></form:option>
+				<form:option value="BOLLYWOOD"></form:option>
+				<form:option value="MUSIC"></form:option>
+			</form:select>
+			<br>
+			
+			<form:label path="ptype" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">CD-Type</form:label>
 			<form:select path="ptype" cssClass="form-control"
 				cssStyle="width:60%">
 				<form:option value="Select Option"></form:option>

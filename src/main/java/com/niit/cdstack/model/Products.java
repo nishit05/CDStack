@@ -28,8 +28,18 @@ public class Products implements Serializable {
 	
 	private float price;
 
-	@Column(name="Description",length=800)
+	@Column(name="Description",length=1024)
 	private String content;
+	
+	private String category;
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
 	public String getContent() {
 		return content;

@@ -34,7 +34,7 @@ public class ProductController {
 		if (result.hasErrors()) {
 			return "productform";
 		}
-
+		
 		else if (p.getPname().isEmpty()) {
 			m.addAttribute("msge", "Enter a Valid Name");
 			return "productform";
@@ -51,6 +51,11 @@ public class ProductController {
 		}
 
 		else if (p.getPtype().equals("Select Option")) {
+			m.addAttribute("msge", "Enter a Valid CD type");
+			return "productform";
+		}
+		
+		else if (p.getCategory().equals("Select Option")) {
 			m.addAttribute("msge", "Enter a Valid Category");
 			return "productform";
 		}

@@ -15,6 +15,7 @@
 		<th>ID</th>
 		<th>NAME</th>
 		<th>CATEGORY</th>
+		<th>CD-TYPE</th>
 		<th>QTY</th>
 		<th>PRICE</th>
 		<th>PRODUCT MANIPULATION</th>
@@ -26,12 +27,13 @@
 		<tr>
 		<td>${prod.pid}</td>
 		<td>${prod.pname}</td>
+		<td>${prod.category}</td>
 		<td>${prod.ptype}</td>
 		<td>${prod.qty}</td>
 		<td>${prod.price}</td>
 		<td colspan="2">
 		<ul class="nav nav-pills">
-		<li><a href='<c:url value="#"></c:url>'>Edit</a></li>
+		<li><a href='<c:url value="editproduct_id=${prod.pid}"></c:url>'>Edit</a></li>
 		<li><a href='<c:url value="deleteproduct_id=${prod.pid}"></c:url>'>Delete</a></li>
 		<li><a href='<c:url value="viewproduct_id=${prod.pid}"></c:url>'>View</a></li>
 		</ul>

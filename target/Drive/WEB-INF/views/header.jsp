@@ -80,6 +80,7 @@ h5 {
 				<li><a href="contact">CONTACT US</a></li>
 				<li><a href="products">VIEW PRODUCTS</a></li>
 				<li><a href="productform">ADD PRODUCTS</a></li>
+				<li><a href="categoryform">ADD CATE</a></li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">

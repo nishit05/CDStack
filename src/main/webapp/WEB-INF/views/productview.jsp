@@ -16,7 +16,13 @@ color: navy;
 <br>
 <h3 align="left" style="color:blue;">Movie-ID: ${prdet.pid}</h3>
 <br>
-<p style="font-size: 25px;" align="justify">${prdet.content}</p>
+<p style="font-size: 25px;" align="justify">Description: <br>${prdet.content}</p>
+<br>
+<p style="font-size: 25px; color: blue;" align="justify">Category: ${prdet.category}</p>
+<br>
+<p style="font-size: 25px; color: blue;" align="justify">Quantity: ${prdet.qty}</p>
+<br>
+<p style="font-size: 25px; color: blue;" align="justify">Price: ${prdet.price}</p>
 <br>
 </div>
 <%@include file="footer.jsp"  %>
