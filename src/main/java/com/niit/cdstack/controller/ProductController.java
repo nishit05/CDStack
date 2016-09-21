@@ -3,6 +3,8 @@ package com.niit.cdstack.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.cdstack.model.Products;
@@ -21,7 +24,7 @@ public class ProductController {
 
 	@Autowired
 	private ProductServiceImpl service;
-	
+
 	@RequestMapping(value = "productform", method = RequestMethod.GET)
 	public String ProductForm(Map<String, Object> model) {
 		Products p = new Products();
@@ -30,16 +33,11 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "addproducts", method = RequestMethod.POST)
-	public String ProductValidation(@ModelAttribute("products") Products p, BindingResult result, Model m) {
+	public String ProductValidation(@Valid @ModelAttribute("products") Products p, BindingResult result, Model m) {
 		if (result.hasErrors()) {
 			return "productform";
 		}
-		
-		else if (p.getPname().isEmpty()) {
-			m.addAttribute("msge", "Enter a Valid Name");
-			return "productform";
-		}
-		
+
 		else if (p.getPrice() == 0.0f) {
 			m.addAttribute("msge", "Price cannot be 0");
 			return "productform";
@@ -54,58 +52,57 @@ public class ProductController {
 			m.addAttribute("msge", "Enter a Valid CD type");
 			return "productform";
 		}
-		
+
 		else if (p.getCategory().equals("Select Option")) {
 			m.addAttribute("msge", "Enter a Valid Category");
 			return "productform";
 		}
-		
-		else if (p.getContent().isEmpty()) {
-			m.addAttribute("msge", "Enter a Valid Description");
-			return "productform";
-		}
 
 		else {
-			
+
 			service.addProduct(p);
 			m.addAttribute("msgc", "Product added sucessfully!!!!");
 			return "productform";
 		}
 	}
-	
-	@RequestMapping(value="products",method=RequestMethod.GET)
-	public String ProductList(Model m)
-	{
-		List<Products>list=service.getAllProducts();
-		m.addAttribute("product", list);
-		return "products";
+
+	@RequestMapping(value = "data", method = RequestMethod.GET)
+	public @ResponseBody List<Products> list() {
+		System.out.println("Inside Angular Controller");
+		return service.getAllProducts();
 	}
-	
-	@RequestMapping(value="deleteproduct_id={id}",method=RequestMethod.GET)
-	public String DeleteProduct(@PathVariable("id")int id)
-	{
+
+	@RequestMapping(value = "products", method = RequestMethod.GET)
+	public ModelAndView ProductList() {
+		List<Products> list = service.getAllProducts();
+		ModelAndView mv = new ModelAndView("products");
+		mv.addObject("product", list);
+		return mv;
+	}
+
+	@RequestMapping(value = "deleteproduct_id={id}", method = RequestMethod.GET)
+	public String DeleteProduct(@PathVariable("id") int id) {
 		service.deleteProduct(id);
 		return "redirect:products";
-		
+
 	}
-	
-	@RequestMapping(value="viewproduct_id={id}",method=RequestMethod.GET)
-	public String ProductView(@PathVariable("id")int id,Model m)
-	{
+
+	@RequestMapping(value = "viewproduct_id={id}", method = RequestMethod.GET)
+	public String ProductView(@PathVariable("id") int id, Model m) {
 		Products p=service.getProductById(id);
 		m.addAttribute("prdet", p);
+		System.out.println("Inside Product View Method");
 		return "productview";
 	}
-	
+
 	@RequestMapping(value = "editproduct_id={id}", method = RequestMethod.GET)
-	public ModelAndView EditProductForm(@PathVariable("id")int id) {
-		Products p=service.getProductById(id);
-		return new ModelAndView("editproduct", "products",p);
+	public ModelAndView EditProductForm(@PathVariable("id") int id) {
+		Products p = service.getProductById(id);
+		return new ModelAndView("editproduct", "products", p);
 	}
-	
-	@RequestMapping(value="updateproduct",method=RequestMethod.POST)
-	public String UpdateProduct(@ModelAttribute("products") Products p, BindingResult result,Model m)
-	{
+
+	@RequestMapping(value = "updateproduct", method = RequestMethod.POST)
+	public String UpdateProduct(@ModelAttribute("products") Products p, BindingResult result, Model m) {
 		if (result.hasErrors()) {
 			return "editproduct";
 		}
@@ -126,7 +123,7 @@ public class ProductController {
 		}
 
 		else {
-			
+
 			service.updateProduct(p);
 			return "redirect:products";
 		}

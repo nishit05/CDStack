@@ -28,7 +28,7 @@ label {
 			method="post" commandName="products">
 
 			<form:hidden path="pid" cssClass="form-control" />
-			<form:errors path="pname" cssStyle="color:black"></form:errors>
+			<form:errors path="pid" cssStyle="color:black"></form:errors>
 			<br>
 
 			<form:label path="pname" cssClass="control-label col-sm-4"

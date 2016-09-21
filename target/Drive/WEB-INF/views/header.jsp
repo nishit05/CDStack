@@ -6,12 +6,10 @@
 <title>CD-STACK</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<script src="resources/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="resources/js/bootstrap.min.js"></script>
-
-<script src="resources/js/angular.min.js"></script>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <style>
 /* Remove the navbar's default rounded borders and increase the bottom margin */
 .navbar {
@@ -75,12 +73,31 @@ h5 {
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-left">
-				<li><a href="/CDStack"><span class="glyphicon glyphicon-home"></span>HOME</a></li>
+				<li><a href="/CDStack"><span
+						class="glyphicon glyphicon-home"></span>HOME</a></li>
 				<li><a href="aboutus">ABOUT US</a></li>
 				<li><a href="contact">CONTACT US</a></li>
-				<li><a href="products">VIEW PRODUCTS</a></li>
-				<li><a href="productform">ADD PRODUCTS</a></li>
-				<li><a href="categoryform">ADD CATE</a></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">PRODUCTS <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="productform">ADD PRODUCTS</a></li>
+						<li><a href="products">VIEW PRODUCTS</a></li>
+					</ul></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown">CATEGORIES<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="categoryform">ADD CATEGORY</a></li>
+						<li><a href="category">VIEW CATEGORIES</a></li>
+					</ul></li>
+					
+					<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown">SUPPLIER<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="supplierform">ADD SUPPLIER</a></li>
+						<li><a href="supplier">VIEW SUPPLIERS'</a></li>
+					</ul></li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">

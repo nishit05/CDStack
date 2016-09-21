@@ -9,7 +9,7 @@
 <div class="container-fluid">
 		<br>
 		<h1 align="center" style="color: navy;">AVAILABLE PRODUCTS</h1>
-		<table class="table table-bordered" style="width: 60%; height: 60%;" align="center">
+		<table class="table table-bordered" style="width: 70%; height: 70%;" align="center">
 		<thead style="background-color: orange;">
 		<tr>
 		<th>ID</th>
@@ -22,7 +22,7 @@
 		</tr>
 		</thead>
 		
-		<tbody style="background-color: white;">
+		<tbody style="background-color: white;" align="center">
 		<c:forEach items="${product}" var="prod">
 		<tr>
 		<td>${prod.pid}</td>

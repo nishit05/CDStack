@@ -11,9 +11,11 @@ label {
 	color: navy;
 }
 </style>
+<script type="text/javascript" src="resources/js/angular.min.js"></script>
+<script type="text/javascript" src="resources/js/AngularJSController.js"></script>
 <body>
 	<%@include file="header.jsp"%>
-	<div class="container">
+	<div class="container" ng-app="App" ng-controller="ProductController">
 		<p align="center" style="font-size: 25px; color: maroon;">${msg}</p>
 		<h1 style="color: navy;" align="center">EDIT PRODUCTS</h1>
 		<br> <br>

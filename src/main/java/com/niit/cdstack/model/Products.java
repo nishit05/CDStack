@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Products implements Serializable {
@@ -17,17 +21,18 @@ public class Products implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)	
 	private int pid;
 
-	
+	@NotNull
 	private int qty;
 	
-	
+	@NotEmpty(message="Name cannot be empty")
 	private String pname;
 
 	private String ptype;
 
-	
+	@NotNull
 	private float price;
 
+	@NotEmpty(message="Description cannot be empty")
 	@Column(name="Description",length=1024)
 	private String content;
 	

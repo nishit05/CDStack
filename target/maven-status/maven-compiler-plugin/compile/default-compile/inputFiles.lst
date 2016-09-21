@@ -9,6 +9,7 @@ D:\Drive\src\main\java\com\niit\cdstack\controller\ProductController.java
 D:\Drive\src\main\java\com\niit\cdstack\model\Category.java
 D:\Drive\src\main\java\com\niit\cdstack\dao\CategoryDAOImpl.java
 D:\Drive\src\main\java\com\niit\cdstack\dao\SupplierDAOImpl.java
+D:\Drive\src\main\java\com\niit\cdstack\controller\SupplierController.java
 D:\Drive\src\main\java\com\niit\cdstack\service\CategoryServiceImpl.java
 D:\Drive\src\main\java\com\niit\cdstack\service\ProductServiceImpl.java
 D:\Drive\src\main\java\com\niit\cdstack\service\ProductService.java

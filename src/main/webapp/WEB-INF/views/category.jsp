@@ -9,7 +9,7 @@
 <div class="container-fluid">
 		<br>
 		<h1 align="center" style="color: navy;">AVAILABLE CATEGORIES</h1>
-		<table class="table table-bordered" style="width: 60%; height: 60%;" align="center">
+		<table class="table table-bordered" style="width: 50%; height: 50%;" align="center">
 		<thead style="background-color: orange;">
 		<tr>
 		<th>ID</th>
