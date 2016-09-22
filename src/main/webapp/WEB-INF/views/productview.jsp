@@ -2,7 +2,6 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <style>
 table {
 	table-layout: fixed;
@@ -24,7 +23,7 @@ table {
 			</thead>
 
 			<tbody style="background-color: white;" align="center">
-				<tr">
+				<tr>
 					<td>Movie ID</td>
 					<td>${prdet.pid}</td>
 				</tr>
@@ -58,5 +57,6 @@ table {
 			</tbody>
 		</table>
 	</div>
+	<%@include file="footer.jsp"  %>
 </body>
 </html>

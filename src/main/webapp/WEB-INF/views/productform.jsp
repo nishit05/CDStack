@@ -13,13 +13,19 @@ label {
 </style>
 <body>
 	<%@include file="header.jsp"%>
+	<%@  taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core"  %>
 	<div class="container">
-		<div class="aler alert-danger">
+	<div class="alert-success">
+			<center>
+				<strong style="font-size: 25px">${msg}</strong>
+			</center>
+		</div>
+		<div class="alert-danger">
 			<center>
 				<strong style="font-size: 25px">${msge}</strong>
 			</center>
 		</div>
-		<div class="aler alert-success">
+		<div class="alert-success">
 			<center>
 				<strong style="font-size: 25px">${msgc}</strong>
 			</center>
@@ -49,9 +55,9 @@ label {
 			<form:select path="category" cssClass="form-control"
 				cssStyle="width:60%">
 				<form:option value="Select Option"></form:option>
-				<form:option value="HOLLYWOOD"></form:option>
-				<form:option value="BOLLYWOOD"></form:option>
-				<form:option value="MUSIC"></form:option>
+				<c:forEach items="${catlist}" var="cate">
+				<form:option value="${cate.name}"></form:option>
+				</c:forEach>
 			</form:select>
 			<br>
 

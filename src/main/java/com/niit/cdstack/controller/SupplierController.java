@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.niit.cdstack.model.Supplier;
 import com.niit.cdstack.service.SupplierServiceImpl;
@@ -30,7 +31,7 @@ public class SupplierController {
 	}
 
 	@RequestMapping(value = "addsupplier", method = RequestMethod.POST)
-	public String SupplierValidation(@ModelAttribute("supplier") Supplier sp, BindingResult result, Model m) {
+	public String SupplierValidation(@ModelAttribute("supplier") Supplier sp, BindingResult result, Model m,RedirectAttributes rea) {
 		if (result.hasErrors()) {
 			return "supplierform";
 		}
@@ -55,8 +56,8 @@ public class SupplierController {
 		else {
 
 			service.addSupplier(sp);
-			m.addAttribute("msgc", "Supplier added sucessfully!!!!");
-			return "supplierform";
+			rea.addFlashAttribute("msgc", "Supplier added sucessfully!!!!");
+			return "redirect:supplierform";
 		}
 	}
 
@@ -68,8 +69,9 @@ public class SupplierController {
 	}
 
 	@RequestMapping(value = "deletesupplier_id={id}", method = RequestMethod.GET)
-	public String DeleteSupplier(@PathVariable("id") int id) {
+	public String DeleteSupplier(@PathVariable("id") int id,RedirectAttributes rea) {
 		service.deleteSupplier(id);
+		rea.addFlashAttribute("msgd", "Supplier Deleted Sucessfully");
 		return "redirect:supplier";
 
 	}
@@ -88,7 +90,7 @@ public class SupplierController {
 	}
 
 	@RequestMapping(value = "updatesupplier", method = RequestMethod.POST)
-	public String UpdateSupplier(@ModelAttribute("supplier") Supplier sp, BindingResult result, Model m) {
+	public String UpdateSupplier(@ModelAttribute("supplier") Supplier sp, BindingResult result, Model m,RedirectAttributes rea) {
 		if (result.hasErrors()) {
 			return "editsupplier";
 		}
@@ -106,13 +108,13 @@ public class SupplierController {
 		
 		else if(sp.getContact().isEmpty() || sp.getContact().length()!=10)
 		{
-			m.addAttribute("msge", "Enter a Valid Address");
+			m.addAttribute("msge", "Enter a Valid Contact Number");
 			return "editsupplier";	
 		}
 
 		else {
-
 			service.updateSupplier(sp);
+			rea.addFlashAttribute("msgu", "Supplier Details Upadated Sucessfully");
 			return "redirect:supplier";
 		}
 	}

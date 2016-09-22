@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.niit.cdstack.model.Category;
 import com.niit.cdstack.model.Products;
+import com.niit.cdstack.service.CategoryServiceImpl;
 import com.niit.cdstack.service.ProductServiceImpl;
 
 @Controller
@@ -24,16 +27,21 @@ public class ProductController {
 
 	@Autowired
 	private ProductServiceImpl service;
+	
+	@Autowired
+	private CategoryServiceImpl csi;
 
 	@RequestMapping(value = "productform", method = RequestMethod.GET)
-	public String ProductForm(Map<String, Object> model) {
+	public String ProductForm(Map<String,Object>model) {
 		Products p = new Products();
 		model.put("products", p);
+		List <Category>li=csi.getAllCategory();
+		model.put("catlist", li);
 		return "productform";
 	}
 
 	@RequestMapping(value = "addproducts", method = RequestMethod.POST)
-	public String ProductValidation(@Valid @ModelAttribute("products") Products p, BindingResult result, Model m) {
+	public String ProductValidation(@Valid @ModelAttribute("products") Products p, BindingResult result, Model m,RedirectAttributes rea) {
 		if (result.hasErrors()) {
 			return "productform";
 		}
@@ -61,8 +69,8 @@ public class ProductController {
 		else {
 
 			service.addProduct(p);
-			m.addAttribute("msgc", "Product added sucessfully!!!!");
-			return "productform";
+			rea.addFlashAttribute("msg","Product Added Successfully");
+			return "redirect:productform";
 		}
 	}
 
@@ -81,8 +89,9 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "deleteproduct_id={id}", method = RequestMethod.GET)
-	public String DeleteProduct(@PathVariable("id") int id) {
+	public String DeleteProduct(@PathVariable("id") int id,RedirectAttributes rea) {
 		service.deleteProduct(id);
+		rea.addFlashAttribute("msgd", "Product Deleted Sucessfully");
 		return "redirect:products";
 
 	}
@@ -98,11 +107,15 @@ public class ProductController {
 	@RequestMapping(value = "editproduct_id={id}", method = RequestMethod.GET)
 	public ModelAndView EditProductForm(@PathVariable("id") int id) {
 		Products p = service.getProductById(id);
-		return new ModelAndView("editproduct", "products", p);
+		ModelAndView mv=new ModelAndView("editproduct");
+		mv.addObject("products", p);
+		List<Category> li=csi.getAllCategory();
+		mv.addObject("catlist", li);
+		return mv;
 	}
 
 	@RequestMapping(value = "updateproduct", method = RequestMethod.POST)
-	public String UpdateProduct(@ModelAttribute("products") Products p, BindingResult result, Model m) {
+	public String UpdateProduct(@ModelAttribute("products") Products p, BindingResult result, Model m,RedirectAttributes rea) {
 		if (result.hasErrors()) {
 			return "editproduct";
 		}
@@ -121,10 +134,15 @@ public class ProductController {
 			m.addAttribute("msg", "Enter a Valid Category");
 			return "editproduct";
 		}
+		
+		else if (p.getCategory().equals("Select Option")) {
+			m.addAttribute("msge", "Enter a Valid Category");
+			return "productform";
+		}
 
 		else {
-
 			service.updateProduct(p);
+			rea.addFlashAttribute("msgu", "Product Details Updated Successfully");
 			return "redirect:products";
 		}
 	}

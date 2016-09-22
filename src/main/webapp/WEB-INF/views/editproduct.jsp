@@ -24,6 +24,7 @@ label {
 		<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 		<%@ taglib prefix="form"
 			uri="http://www.springframework.org/tags/form"%>
+			<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
 		<form:form action="${pageContext.request.contextPath}/updateproduct"
@@ -44,9 +45,9 @@ label {
 			<form:select path="category" cssClass="form-control"
 				cssStyle="width:60%">
 				<form:option value="Select Option"></form:option>
-				<form:option value="HOLLYWOOD"></form:option>
-				<form:option value="BOLLYWOOD"></form:option>
-				<form:option value="MUSIC"></form:option>
+				<c:forEach items="${catlist}" var="cate">
+				<form:option value="${cate.name}"></form:option>
+				</c:forEach>
 			</form:select>
 			<br>
 			

@@ -7,12 +7,26 @@
 <%@  taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@include file="header.jsp"  %>
 <div class="container-fluid">
+<div class="container">
+		<div class="alert-success">
+			<center>
+				<strong style="font-size: 25px">${msgd}</strong>
+			</center>
+			</div>
+			</div>
+		<div class="container">
+		<div class="alert-success">
+			<center>
+				<strong style="font-size: 25px">${msgu}</strong>
+			</center>
+			</div>
+			</div>
 		<br>
 		<h1 align="center" style="color: navy;">AVAILABLE CATEGORIES</h1>
 		<table class="table table-bordered" style="width: 50%; height: 50%;" align="center">
 		<thead style="background-color: orange;">
 		<tr>
-		<th>ID</th>
+<!-- 		<th>ID</th> -->
 		<th>NAME</th>
 		<th>CATEGORY MANIPULATION</th>
 		</tr>
@@ -21,7 +35,7 @@
 		<tbody style="background-color: white;">
 		<c:forEach items="${category}" var="cate">
 		<tr>
-		<td>${cate.id}</td>
+<%-- 		<td>${cate.id}</td> --%>
 		<td>${cate.name}</td>
 		<td colspan="2">
 		<ul class="nav nav-pills">

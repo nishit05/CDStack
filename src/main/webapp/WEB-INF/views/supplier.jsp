@@ -7,12 +7,27 @@
 <%@  taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@include file="header.jsp"  %>
 <div class="container-fluid">
+<div class="container">
+		<div class="alert-success">
+			<center>
+				<strong style="font-size: 25px">${msgd}</strong>
+			</center>
+			</div>
+			</div>
+		<br>
+		<div class="container">
+		<div class="alert-success">
+			<center>
+				<strong style="font-size: 25px">${msgu}</strong>
+			</center>
+			</div>
+			</div>
 		<br>
 		<h1 align="center" style="color: navy;">SUPPLIERS' LIST</h1>
 		<table class="table table-bordered" style="width: 80%; height: 80%;" align="center">
 		<thead style="background-color: orange;">
 		<tr>
-		<th>ID</th>
+<!-- 		<th>ID</th> -->
 		<th>NAME</th>
 		<th>ADDRESS</th>
 		<th>CONTACT</th>
@@ -23,7 +38,7 @@
 		<tbody style="background-color: white;">
 		<c:forEach items="${supplier}" var="sp">
 		<tr>
-		<td>${sp.id}</td>
+<%-- 		<td>${sp.id}</td> --%>
 		<td>${sp.sname}</td>
 		<td>${sp.haddress}</td>
 		<td>${sp.contact}</td>

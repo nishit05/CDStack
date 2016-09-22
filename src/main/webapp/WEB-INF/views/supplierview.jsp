@@ -6,21 +6,49 @@
 p{
 color: navy;
 }
+
+table {
+	table-layout: fixed;
+}
 </style>
 <body>
-<%@include file="header.jsp"  %>
+<%@include file="header.jsp"%>
 <div class="container">
-<h1 align="center" >Supplier details</h1>
-<br>
-<h1 align="center" style="color: maroon;">${spdet.sname}</h1>
-<br>
-<h3 align="left" style="color:blue;">Supplier-ID: ${spdet.id}</h3>
-<br>
-<p style="font-size: 25px;" align="justify">Supplier Address: <br>${spdet.haddress}</p>
-<br>
-<p style="font-size: 25px; color: blue;" align="justify">Supplier Contact: ${spdet.contact}</p>
-<br>
-</div>
+		<br>
+		<h1 align="center" style="color: navy;">SUPPLIER DETAILS</h1>
+		<table class="table" style="width: 70%; height: 70%;" align="center">
+			<thead style="background-color: orange;">
+				<tr>
+					<th>FIELD</th>
+					<th>VALUE</th>
+				</tr>
+			</thead>
+
+			<tbody style="background-color: white;" align="center">
+				<tr">
+					<td>Supplier ID</td>
+					<td>${spdet.id}</td>
+				</tr>
+
+				<tr>
+					<td>Supplier Name</td>
+					<td>${spdet.sname}</td>
+				</tr>
+
+				<tr>
+					<td align="center">Supplier Address</td>
+					<td align="justify">${spdet.haddress}</td>
+				</tr>
+
+				<tr>
+					<td>Contact</td>
+					<td>${spdet.contact}</td>
+				</tr>
+
+
+			</tbody>
+		</table>
+	</div>
 <%@include file="footer.jsp"  %>
 </body>
 </html>
