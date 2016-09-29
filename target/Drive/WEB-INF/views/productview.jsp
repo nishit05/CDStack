@@ -3,17 +3,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
-table{
+table {
 	table-layout: fixed;
 }
 </style>
+<script src="resources/js/angular.min.js"></script>
+<script src="<c:url value='resources/js/AngularJSController.js'/>"></script>
 <body>
-	<%@include file="header.jsp" %>
-	<div class="container">
+	<%@include file="header.jsp"%>
+	<div class="container" ng-app="App" ng-controller="ProductController">
 		<br>
 		<h1 align="center" style="color: navy;">PRODUCT DETAILS</h1>
-		<table class="table" style="width: 70%; height: 70%;"
-			align="center">
+		<table class="table" style="width: 70%; height: 70%;" align="center">
 			<thead style="background-color: orange;">
 				<tr>
 					<th>FIELD</th>
@@ -32,7 +33,7 @@ table{
 					<td>${prdet.pname}</td>
 				</tr>
 
-				<tr >
+				<tr>
 					<td align="center">Movie Description</td>
 					<td align="justify">${prdet.content}</td>
 				</tr>
@@ -52,9 +53,10 @@ table{
 					<td>Price</td>
 					<td>${prdet.price}</td>
 				</tr>
-				
+
 			</tbody>
 		</table>
 	</div>
+	<%@include file="footer.jsp"  %>
 </body>
 </html>

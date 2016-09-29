@@ -10,13 +10,26 @@ input[type=text] {
 label {
 	color: navy;
 }
-
 </style>
 <body>
 	<%@include file="header.jsp"%>
+	<%@  taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core"  %>
 	<div class="container">
-		<div class="aler alert-danger"><center><strong style="font-size: 25px">${msge}</strong></center></div>
-		<div class="aler alert-success"><center><strong style="font-size: 25px">${msgc}</strong></center></div>
+	<div class="alert-success">
+			<center>
+				<strong style="font-size: 25px">${msg}</strong>
+			</center>
+		</div>
+		<div class="alert-danger">
+			<center>
+				<strong style="font-size: 25px">${msge}</strong>
+			</center>
+		</div>
+		<div class="alert-success">
+			<center>
+				<strong style="font-size: 25px">${msgc}</strong>
+			</center>
+		</div>
 		<h1 style="color: navy;" align="center">ADD PRODUCTS</h1>
 		<br> <br>
 
@@ -30,10 +43,11 @@ label {
 			method="post" commandName="products">
 
 
+			
 			<form:label path="pname" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Product-Name</form:label>
 			<form:input path="pname" cssClass="form-control" />
-			<form:errors path="pname" cssStyle="color:black"></form:errors>
+			<form:errors path="pname" cssStyle="font-size:25px; color:maroon"></form:errors>
 			<br>
 
 			<form:label path="category" cssClass="control-label col-sm-4"
@@ -41,12 +55,12 @@ label {
 			<form:select path="category" cssClass="form-control"
 				cssStyle="width:60%">
 				<form:option value="Select Option"></form:option>
-				<form:option value="HOLLYWOOD"></form:option>
-				<form:option value="BOLLYWOOD"></form:option>
-				<form:option value="MUSIC"></form:option>
+				<c:forEach items="${catlist}" var="cate">
+				<form:option value="${cate.name}"></form:option>
+				</c:forEach>
 			</form:select>
 			<br>
-			
+
 			<form:label path="ptype" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">CD-Type</form:label>
 			<form:select path="ptype" cssClass="form-control"
@@ -72,8 +86,9 @@ label {
 
 			<form:label path="content" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Description</form:label>
-			<form:textarea path="content" cssClass="form-control" rows="5" cols="30"/>
-			<form:errors path="content" cssStyle="color:black"></form:errors>
+			<form:textarea path="content" cssClass="form-control" rows="5"
+				cols="30" />
+			<form:errors path="content" cssStyle="font-size:25px; color:maroon"></form:errors>
 			<br>
 			<div class="container text-center">
 				<button class="btn btn-primary" type="submit"

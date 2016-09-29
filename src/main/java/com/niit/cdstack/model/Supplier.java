@@ -56,4 +56,5 @@ public class Supplier implements Serializable {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
+	
 }

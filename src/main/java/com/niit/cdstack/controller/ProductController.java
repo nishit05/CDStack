@@ -88,7 +88,7 @@ public class ProductController {
 		return mv;
 	}
 
-	@RequestMapping(value = "deleteproduct_id={id}", method = RequestMethod.GET)
+	@RequestMapping(value = "deleteproduct-id={id}", method = RequestMethod.GET)
 	public String DeleteProduct(@PathVariable("id") int id,RedirectAttributes rea) {
 		service.deleteProduct(id);
 		rea.addFlashAttribute("msgd", "Product Deleted Sucessfully");
@@ -96,15 +96,17 @@ public class ProductController {
 
 	}
 
-	@RequestMapping(value = "viewproduct_id={id}", method = RequestMethod.GET)
-	public String ProductView(@PathVariable("id") int id, Model m) {
+	@RequestMapping(value = "productview-id={id}", method = RequestMethod.GET)
+	public ModelAndView ProductView(@PathVariable("id") int id) {
 		Products p=service.getProductById(id);
-		m.addAttribute("prdet", p);
+		ModelAndView mv=new ModelAndView("productview");
+		mv.addObject("prdet", p);
+		//m.addAttribute("prdet", p);
 		System.out.println("Inside Product View Method");
-		return "productview";
+		return mv;
 	}
 
-	@RequestMapping(value = "editproduct_id={id}", method = RequestMethod.GET)
+	@RequestMapping(value = "editproduct-id={id}", method = RequestMethod.GET)
 	public ModelAndView EditProductForm(@PathVariable("id") int id) {
 		Products p = service.getProductById(id);
 		ModelAndView mv=new ModelAndView("editproduct");

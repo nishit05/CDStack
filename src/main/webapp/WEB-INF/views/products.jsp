@@ -47,9 +47,9 @@
 		<td>{{prod.price}}</td>
 		<td colspan="2">
 		<ul class="nav nav-pills">
-		<li><a href="editproduct_id={{prod.pid}}">Edit</a></li>
-		<li><a href="deleteproduct_id={{prod.pid}}">Delete</a></li>
-		<li><a href="viewproduct_id={{prod.pid}}">View</a></li>
+		<li><a href="editproduct-id={{prod.pid}}">Edit</a></li>
+		<li><a href="deleteproduct-id={{prod.pid}}">Delete</a></li>
+		<li><a href="productview-id={{prod.pid}}">View</a></li>
 		</ul>
 		</td>
 		</tr>

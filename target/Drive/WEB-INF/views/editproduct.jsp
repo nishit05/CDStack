@@ -11,9 +11,11 @@ label {
 	color: navy;
 }
 </style>
+<script type="text/javascript" src="resources/js/angular.min.js"></script>
+<script type="text/javascript" src="resources/js/AngularJSController.js"></script>
 <body>
 	<%@include file="header.jsp"%>
-	<div class="container">
+	<div class="container" ng-app="App" ng-controller="ProductController">
 		<p align="center" style="font-size: 25px; color: maroon;">${msg}</p>
 		<h1 style="color: navy;" align="center">EDIT PRODUCTS</h1>
 		<br> <br>
@@ -22,6 +24,7 @@ label {
 		<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 		<%@ taglib prefix="form"
 			uri="http://www.springframework.org/tags/form"%>
+			<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
 		<form:form action="${pageContext.request.contextPath}/updateproduct"
@@ -42,9 +45,9 @@ label {
 			<form:select path="category" cssClass="form-control"
 				cssStyle="width:60%">
 				<form:option value="Select Option"></form:option>
-				<form:option value="HOLLYWOOD"></form:option>
-				<form:option value="BOLLYWOOD"></form:option>
-				<form:option value="MUSIC"></form:option>
+				<c:forEach items="${catlist}" var="cate">
+				<form:option value="${cate.name}"></form:option>
+				</c:forEach>
 			</form:select>
 			<br>
 			

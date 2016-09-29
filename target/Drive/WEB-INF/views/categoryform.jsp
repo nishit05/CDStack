@@ -15,8 +15,8 @@ label {
 <body>
 	<%@include file="header.jsp"%>
 	<div class="container">
-		<div class="aler alert-danger"><center><strong style="font-size: 25px">${msge}</strong></center></div>
-		<div class="aler alert-success"><center><strong style="font-size: 25px">${msgc}</strong></center></div>
+		<div class="alert-danger"><center><strong style="font-size: 25px">${msge}</strong></center></div>
+		<div class="alert-success"><center><strong style="font-size: 25px">${msgc}</strong></center></div>
 		<h1 style="color: navy;" align="center">ADD CATEGORY</h1>
 		<br> <br>
 

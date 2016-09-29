@@ -14,20 +14,18 @@ label {
 <body>
 	<%@include file="header.jsp"%>
 	<div class="container">
-		<div class="aler alert-danger">
+		<div class="alert-danger">
 			<center>
 				<strong style="font-size: 25px">${msge}</strong>
 			</center>
 		</div>
-		<div class="aler alert-success">
+		<div class="alert-success">
 			<center>
 				<strong style="font-size: 25px">${msgc}</strong>
 			</center>
 		</div>
 		<h1 style="color: navy;" align="center">ADD SUPPLIER</h1>
 		<br> <br>
-
-
 		<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 		<%@ taglib prefix="form"
 			uri="http://www.springframework.org/tags/form"%>

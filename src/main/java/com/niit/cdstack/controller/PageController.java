@@ -25,9 +25,5 @@ public class PageController {
 		return "contact";
 	}
 
-	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String Login() {
-		return "login";
-	}
 
 }

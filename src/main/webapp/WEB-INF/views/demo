@@ -1,0 +1,95 @@
+@RequestMapping(value = "register", method = RequestMethod.GET)
+	public String ProductForm(Map<String,Object>model) {
+		Users u = new Users();
+		model.put("users", u);
+		return "register";
+	}
+
+	@RequestMapping(value = "addcustomer", method = RequestMethod.POST)
+	public String ProductValidation(@Valid @ModelAttribute("users") Users u, BindingResult result, Model m,RedirectAttributes rea) {
+		if (result.hasErrors()) {
+			return "productform";
+		}
+		else {
+
+			//service.addProduct(p);
+			rea.addFlashAttribute("msg","Customer Added Successfully");
+			return "redirect:productform";
+		}
+	}
+
+	@RequestMapping(value = "data", method = RequestMethod.GET)
+	public @ResponseBody List<Products> list() {
+		System.out.println("Inside Angular Controller");
+		return service.getAllProducts();
+	}
+
+	@RequestMapping(value = "products", method = RequestMethod.GET)
+	public ModelAndView ProductList() {
+		List<Products> list = service.getAllProducts();
+		ModelAndView mv = new ModelAndView("products");
+		mv.addObject("product", list);
+		return mv;
+	}
+
+	@RequestMapping(value = "deleteproduct-id={id}", method = RequestMethod.GET)
+	public String DeleteProduct(@PathVariable("id") int id,RedirectAttributes rea) {
+		service.deleteProduct(id);
+		rea.addFlashAttribute("msgd", "Product Deleted Sucessfully");
+		return "redirect:products";
+
+	}
+
+	@RequestMapping(value = "productview-id={id}", method = RequestMethod.GET)
+	public ModelAndView ProductView(@PathVariable("id") int id) {
+		Products p=service.getProductById(id);
+		ModelAndView mv=new ModelAndView("productview");
+		mv.addObject("prdet", p);
+		//m.addAttribute("prdet", p);
+		System.out.println("Inside Product View Method");
+		return mv;
+	}
+
+	@RequestMapping(value = "editproduct-id={id}", method = RequestMethod.GET)
+	public ModelAndView EditProductForm(@PathVariable("id") int id) {
+		Products p = service.getProductById(id);
+		ModelAndView mv=new ModelAndView("editproduct");
+		mv.addObject("products", p);
+		List<Category> li=csi.getAllCategory();
+		mv.addObject("catlist", li);
+		return mv;
+	}
+
+	@RequestMapping(value = "updateproduct", method = RequestMethod.POST)
+	public String UpdateProduct(@ModelAttribute("products") Products p, BindingResult result, Model m,RedirectAttributes rea) {
+		if (result.hasErrors()) {
+			return "editproduct";
+		}
+
+		else if (p.getPrice() == 0.0f) {
+			m.addAttribute("msg", "Price cannot be 0");
+			return "editproduct";
+		}
+
+		else if (p.getQty() == 0) {
+			m.addAttribute("msg", "Quantity cannot be 0");
+			return "editproduct";
+		}
+
+		else if (p.getPtype().equals("Select Option")) {
+			m.addAttribute("msg", "Enter a Valid Category");
+			return "editproduct";
+		}
+		
+		else if (p.getCategory().equals("Select Option")) {
+			m.addAttribute("msge", "Enter a Valid Category");
+			return "productform";
+		}
+
+		else {
+			service.updateProduct(p);
+			rea.addFlashAttribute("msgu", "Product Details Updated Successfully");
+			return "redirect:products";
+		}
+	}
+}

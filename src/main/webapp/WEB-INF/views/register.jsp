@@ -3,16 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
-input[type=text]{
-width:60%;
+input[type=text] {
+	width: 60%;
 }
 
-input[type=email]{
-width:60%;
+input[type=email] {
+	width: 60%;
 }
 
-input[type=password]{
-width:60%;
+input[type=password] {
+	width: 60%;
 }
 
 input.cpass {
@@ -22,13 +22,20 @@ input.cpass {
 label {
 	color: navy;
 }
-
-
 </style>
 <body>
 	<%@include file="header.jsp"%>
 	<div class="container">
-		<p align="center" style="font-size: 25px; color: maroon;">${msg}</p>
+		<div class="alert-danger">
+			<center>
+				<strong style="font-size: 25px">${msge}</strong>
+			</center>
+		</div>
+		<div class="alert-success">
+			<center>
+				<strong style="font-size: 25px">${msgs}</strong>
+			</center>
+		</div>
 		<h1 style="color: navy;" align="center">REGISTER</h1>
 		<br> <br>
 
@@ -38,9 +45,13 @@ label {
 			uri="http://www.springframework.org/tags/form"%>
 
 
-		<form:form action="${pageContext.request.contextPath}/registerprocess"
+		<form:form action="${pageContext.request.contextPath}/addcustomer"
 			method="post" commandName="users">
 
+
+			<form:hidden path="u_id" cssClass="form-control" />
+			<form:errors path="u_id" cssStyle="color:black"></form:errors>
+			<br>
 
 			<form:label path="name" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Name</form:label>
@@ -53,18 +64,18 @@ label {
 			<form:input path="email" cssClass="form-control" />
 			<br>
 
-			<form:label path="mno" cssClass="control-label col-sm-4"
-				cssStyle="font-size: 25px">Mobile No.</form:label>
-			<form:input path="mno" cssClass="form-control" />
-			<form:errors path="mno" cssStyle="color:black"></form:errors>
+			<form:label path="username" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">Username</form:label>
+			<form:input path="username" cssClass="form-control" />
+			<form:errors path="username" cssStyle="color:black"></form:errors>
 			<br>
 
-			<form:label path="pass" cssClass="control-label col-sm-4"
+			<form:label path="password" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Password</form:label>
-			<form:password path="pass" cssClass="form-control" />
-			<form:errors path="pass" cssStyle="color:black"></form:errors>
+			<form:password path="password" cssClass="form-control" />
+			<form:errors path="password" cssStyle="color:black"></form:errors>
 			<br>
-			
+
 			<form:label path="cpass" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Confirm Password</form:label>
 			<form:password path="cpass" cssClass="form-control" />
@@ -76,7 +87,7 @@ label {
 					style="margin-right: 20px; font-size: 25px">Submit</button>
 
 				<button class="btn btn-danger" type="reset" style="font-size: 25px">Cancel</button>
-				<br><br>
+				<br> <br>
 			</div>
 		</form:form>
 	</div>

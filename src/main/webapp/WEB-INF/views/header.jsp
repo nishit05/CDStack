@@ -41,7 +41,8 @@ h5 {
 </style>
 </head>
 <body style="background-color: olive;">
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="k"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 	<div class="container-fluid">
 		<div class="row">
@@ -101,10 +102,18 @@ h5 {
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span
-						class="glyphicon glyphicon-shopping-cart"></span> CART</a></li>
+			<sec:authorize access="isAnonymous()">
+				<!--  <li><a href="#"><span
+						class="glyphicon glyphicon-shopping-cart"></span> CART</a></li>-->
 				<li><a href="login">LOGIN</a></li>
-				<!--  <li><a href="register">REGISTER</a></li>-->
+				 <li><a href="register">REGISTER</a></li>
+				 </sec:authorize>
+				 
+				 <sec:authorize access="isAuthenticated()">
+				 <li>
+				 <a href="<k:url value="/logout"/>"> LOGOUT</a>
+				 </li>
+				 </sec:authorize>
 			</ul>
 		</div>
 		</nav>
