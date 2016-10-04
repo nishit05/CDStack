@@ -39,8 +39,8 @@
 		<td>${cate.name}</td>
 		<td colspan="2">
 		<ul class="nav nav-pills">
-		<li><a href='<c:url value="editcategory_id=${cate.id}"></c:url>'>Edit</a></li>
-		<li><a href='<c:url value="deletecategory_id=${cate.id}"></c:url>'>Delete</a></li>
+		<li><a href='<c:url value="editcategory_id=${cate.c_id}"></c:url>'>Edit</a></li>
+		<li><a href='<c:url value="deletecategory_id=${cate.c_id}"></c:url>'>Delete</a></li>
 		</ul>
 		</td>
 		</tr>

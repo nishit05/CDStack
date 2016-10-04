@@ -5,17 +5,27 @@
 <style>
 input[type=text] {
 	width: 60%;
+	
 }
 
 label {
 	color: navy;
 }
 </style>
+<script src="resources/js/angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module('App', []);
+	app.controller('ProductController', function($scope, $http) {
+		$http.get("cdata").then(function(response) {
+			$scope.Data = response.data;
+		});
+	});
+</script>
 <body>
 	<%@include file="header.jsp"%>
-	<%@  taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core"  %>
-	<div class="container">
-	<div class="alert-success">
+	<%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<div class="container" ng-app="App" ng-controller="ProductController">
+		<div class="alert-success">
 			<center>
 				<strong style="font-size: 25px">${msg}</strong>
 			</center>
@@ -43,11 +53,11 @@ label {
 			method="post" commandName="products">
 
 
-			
+
 			<form:label path="pname" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Product-Name</form:label>
 			<form:input path="pname" cssClass="form-control" />
-			<form:errors path="pname" cssStyle="font-size:25px; color:maroon"></form:errors>
+			<form:errors path="pname" cssStyle="font-size:25px; color:maroon;font-weight:bolder"></form:errors>
 			<br>
 
 			<form:label path="category" cssClass="control-label col-sm-4"
@@ -55,9 +65,7 @@ label {
 			<form:select path="category" cssClass="form-control"
 				cssStyle="width:60%">
 				<form:option value="Select Option"></form:option>
-				<c:forEach items="${catlist}" var="cate">
-				<form:option value="${cate.name}"></form:option>
-				</c:forEach>
+				<form:option ng-repeat="cate in Data" value="{{cate.name}}"></form:option>
 			</form:select>
 			<br>
 
@@ -75,20 +83,20 @@ label {
 			<form:label path="qty" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Quantity</form:label>
 			<form:input path="qty" cssClass="form-control" />
-			<form:errors path="qty" cssStyle="color:black"></form:errors>
+			<form:errors path="qty" cssStyle="font-size:25px;color:maroon;font-weight:bolder"></form:errors>
 			<br>
 
 			<form:label path="price" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Price</form:label>
 			<form:input path="price" cssClass="form-control" />
-			<form:errors path="price" cssStyle="color:black"></form:errors>
+			<form:errors path="price" cssStyle="font-size:25px;color:maroon;font-weight:bolder"></form:errors>
 			<br>
-
+	
 			<form:label path="content" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Description</form:label>
 			<form:textarea path="content" cssClass="form-control" rows="5"
 				cols="30" />
-			<form:errors path="content" cssStyle="font-size:25px; color:maroon"></form:errors>
+			<form:errors path="content" cssStyle="font-size:25px; color:maroon; font-weight:bolder"></form:errors>
 			<br>
 			<div class="container text-center">
 				<button class="btn btn-primary" type="submit"

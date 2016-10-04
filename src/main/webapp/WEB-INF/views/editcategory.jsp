@@ -27,8 +27,8 @@ label {
 		<form:form action="${pageContext.request.contextPath}/updatecategory"
 			method="post" commandName="category">
 
-			<form:hidden path="id" cssClass="form-control" />
-			<form:errors path="id" cssStyle="color:black"></form:errors>
+			<form:hidden path="c_id" cssClass="form-control" />
+			<form:errors path="c_id" cssStyle="color:black"></form:errors>
 			<br>
 
 			<form:label path="name" cssClass="control-label col-sm-4"

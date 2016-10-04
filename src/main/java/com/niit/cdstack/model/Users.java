@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -17,12 +19,14 @@ public class Users {
 	private int u_id;
 
 	@NotEmpty(message = "Name Cannot be Empty")
+	@Pattern(regexp="^[A-Za-z]*$",message="Enter only Letters")
 	private String name;
 	@NotEmpty(message = "Username Cannot be Empty")
 	private String username;
-	@NotEmpty(message = "Password Cannot be Empty")
+	@Size(min=6,max=10,message="Password should 6-10 charcters long")
 	private String password;
 	@NotEmpty(message = "Email Cannot be Empty")
+	@Pattern(regexp="^(.+)@(.+)$",message="Enter a valid Email id")
 	private String email;
 	private boolean enabled = true;
 

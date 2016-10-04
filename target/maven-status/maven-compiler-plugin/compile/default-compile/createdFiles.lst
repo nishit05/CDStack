@@ -25,6 +25,7 @@ com\niit\cdstack\controller\SupplierController.class
 com\niit\cdstack\service\CustomerService.class
 com\niit\cdstack\model\Supplier.class
 com\niit\cdstack\service\UserRoleServiceImpl.class
+com\niit\cdstack\validations\IdGenerator.class
 com\niit\cdstack\model\Users.class
 com\niit\cdstack\dao\CustomerDAO.class
 com\niit\cdstack\dao\CategoryDAO.class

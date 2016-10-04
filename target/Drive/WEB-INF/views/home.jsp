@@ -5,6 +5,9 @@
 
 <body>
 	<%@include file="header.jsp"%>
+	<div class="container">
+				<p style="color: maroon; font-size: 25px;" align="right">${msg}</p>
+				</div>
 	<div class="container-fulid text-center">
 		<h1 style="color: navy;">LATEST BOLLYWOOD OFFERS</h1>
 	</div>

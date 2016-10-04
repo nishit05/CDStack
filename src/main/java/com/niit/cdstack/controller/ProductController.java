@@ -32,27 +32,18 @@ public class ProductController {
 	private CategoryServiceImpl csi;
 
 	@RequestMapping(value = "productform", method = RequestMethod.GET)
-	public String ProductForm(Map<String,Object>model) {
-		Products p = new Products();
-		model.put("products", p);
+	public ModelAndView ProductForm() {
+		ModelAndView mv=new ModelAndView("productform");
+		Products p=new Products();
+		mv.addObject(p);
 		List <Category>li=csi.getAllCategory();
-		model.put("catlist", li);
-		return "productform";
+		mv.addObject("catlist", li);
+		return mv;
 	}
 
 	@RequestMapping(value = "addproducts", method = RequestMethod.POST)
 	public String ProductValidation(@Valid @ModelAttribute("products") Products p, BindingResult result, Model m,RedirectAttributes rea) {
 		if (result.hasErrors()) {
-			return "productform";
-		}
-
-		else if (p.getPrice() == 0.0f) {
-			m.addAttribute("msge", "Price cannot be 0");
-			return "productform";
-		}
-
-		else if (p.getQty() == 0) {
-			m.addAttribute("msge", "Quantity cannot be 0");
 			return "productform";
 		}
 
@@ -80,6 +71,12 @@ public class ProductController {
 		return service.getAllProducts();
 	}
 
+	@RequestMapping(value = "cdata", method = RequestMethod.GET)
+	public @ResponseBody List<Category> clist() {
+		System.out.println("Inside Angular Controller");
+		return csi.getAllCategory();
+	}
+	
 	@RequestMapping(value = "products", method = RequestMethod.GET)
 	public ModelAndView ProductList() {
 		List<Products> list = service.getAllProducts();

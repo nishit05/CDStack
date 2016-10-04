@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.niit.cdstack.model.Category;
 import com.niit.cdstack.model.Products;
+import com.niit.cdstack.validations.IdGenerator;
 
 @Repository
 @Transactional
@@ -18,12 +20,15 @@ public class ProductsDAOImpl implements ProductsDAO{
 
 	@Autowired
 	private SessionFactory sessionFactory;
+
 	
 	@Override
 	public void addProduct(Products p) {
 		// TODO Auto-generated method stub
 		Session s=sessionFactory.openSession();
+		Transaction t=s.beginTransaction();
 		s.saveOrUpdate(p);
+		t.commit();
 		s.close();
 		
 	}

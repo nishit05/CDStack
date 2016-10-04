@@ -7,35 +7,35 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.NotFound;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Products implements Serializable {
 
 	private static final long serialVersionUID = -922758901914038356L;
-
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)	
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int pid;
 
 	@NotNull
+	@Min(value=10)
 	private int qty;
-	
-	@NotEmpty(message="Name cannot be empty")
+
+	@NotEmpty(message = "Name cannot be empty")
 	private String pname;
 
 	private String ptype;
 
 	@NotNull
+	@Min(value=100)
 	private float price;
 
-	@NotEmpty(message="Description cannot be empty")
-	@Column(name="Description",length=1024)
+	@NotEmpty(message = "Description cannot be empty")
+	@Column(name = "Description", length = 1024)
 	private String content;
 	
 	private String category;

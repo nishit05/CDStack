@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,9 @@ import com.niit.cdstack.validations.FormValidator;
 @Controller
 public class CustomerController {
 
-	FormValidator fv = new FormValidator();
+	
+	@Autowired
+	private HttpSession session;
 
 	@Autowired
 	private CustomerServiceImpl service;
@@ -43,14 +46,6 @@ public class CustomerController {
 	public String ProductValidation(@Valid @ModelAttribute("users") Users u, BindingResult result, Model m,
 			RedirectAttributes rea) {
 		if (result.hasErrors()) {
-			return "register";
-		} else if (fv.IsName(u.getName())) {
-			m.addAttribute("msge", "Name should contain only Letters");
-			return "register";
-		}
-		else if(fv.IsValidPassword(u.getPassword()))
-		{
-			m.addAttribute("msge", "Password should be 6-10 characters long");
 			return "register";
 		}
 		else if (!u.getCpass().equals(u.getPassword())) {
@@ -90,7 +85,7 @@ public class CustomerController {
 		ModelAndView mv=new ModelAndView("home");
 		Authentication a=SecurityContextHolder.getContext().getAuthentication();
 		String name=a.getName();
-		mv.addObject("msg", "Welcome "+name);
+		session.setAttribute("name", name);
 		return mv;
 	}
 }

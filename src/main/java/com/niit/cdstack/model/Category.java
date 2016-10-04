@@ -14,14 +14,15 @@ public class Category implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int c_id;
 	
-	public int getId() {
-		return id;
+
+	public int getC_id() {
+		return c_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setC_id(int c_id) {
+		this.c_id = c_id;
 	}
 
 	private String name;
@@ -32,8 +33,5 @@ public class Category implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-
 	
 }

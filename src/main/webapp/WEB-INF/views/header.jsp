@@ -6,9 +6,9 @@
 <title>CD-STACK</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="resources/js/bootstrap.min.js"></script>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	src="resources/js/jquery-3.1.1.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <style>
 /* Remove the navbar's default rounded borders and increase the bottom margin */
@@ -103,15 +103,16 @@ h5 {
 
 			<ul class="nav navbar-nav navbar-right">
 			<sec:authorize access="isAnonymous()">
-				<!--  <li><a href="#"><span
-						class="glyphicon glyphicon-shopping-cart"></span> CART</a></li>-->
+
 				<li><a href="login">LOGIN</a></li>
 				 <li><a href="register">REGISTER</a></li>
 				 </sec:authorize>
 				 
 				 <sec:authorize access="isAuthenticated()">
 				 <li>
-				 <a href="<k:url value="/logout"/>"> LOGOUT</a>
+				 <li><a href="#"><span
+						class="glyphicon glyphicon-shopping-cart"></span> CART</a></li>
+				 <li><a href="<k:url value="/logout"/>"> LOGOUT</a>
 				 </li>
 				 </sec:authorize>
 			</ul>

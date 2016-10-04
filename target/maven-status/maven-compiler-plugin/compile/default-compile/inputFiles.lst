@@ -11,6 +11,7 @@ D:\Drive\src\main\java\com\niit\cdstack\controller\PageController.java
 D:\Drive\src\main\java\com\niit\cdstack\controller\ProductController.java
 D:\Drive\src\main\java\com\niit\cdstack\service\CustomerService.java
 D:\Drive\src\main\java\com\niit\cdstack\service\CustomerServiceImpl.java
+D:\Drive\src\main\java\com\niit\cdstack\validations\IdGenerator.java
 D:\Drive\src\main\java\com\niit\cdstack\dao\SupplierDAOImpl.java
 D:\Drive\src\main\java\com\niit\cdstack\dao\UserRoleDAOImpl.java
 D:\Drive\src\main\java\com\niit\cdstack\controller\CustomerController.java

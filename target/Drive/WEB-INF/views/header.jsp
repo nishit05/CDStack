@@ -41,6 +41,7 @@ h5 {
 </style>
 </head>
 <body style="background-color: olive;">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="k"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 	<div class="container-fluid">
@@ -109,7 +110,9 @@ h5 {
 				 </sec:authorize>
 				 
 				 <sec:authorize access="isAuthenticated()">
-				 <li><a href='<c:url value="/j_spring_security_logout"/>'>LOGOUT</a></li>
+				 <li>
+				 <a href="<k:url value="/logout"/>"> LOGOUT</a>
+				 </li>
 				 </sec:authorize>
 			</ul>
 		</div>
