@@ -23,7 +23,7 @@
 			</div>
 		<br>
 		<h1 align="center" style="color: navy;">AVAILABLE CATEGORIES</h1>
-		<table class="table table-bordered" style="width: 50%; height: 50%;" align="center">
+		<table class="table table-bordered" style="width: 30%; height: 50%;" align="center">
 		<thead style="background-color: orange;">
 		<tr>
 <!-- 		<th>ID</th> -->
@@ -32,16 +32,14 @@
 		</tr>
 		</thead>
 		
-		<tbody style="background-color: white;">
+		<tbody style="background-color: white;" align="center"> 
 		<c:forEach items="${category}" var="cate">
 		<tr>
 <%-- 		<td>${cate.id}</td> --%>
 		<td>${cate.name}</td>
 		<td colspan="2">
-		<ul class="nav nav-pills">
-		<li><a href='<c:url value="editcategory_id=${cate.c_id}"></c:url>'>Edit</a></li>
-		<li><a href='<c:url value="deletecategory_id=${cate.c_id}"></c:url>'>Delete</a></li>
-		</ul>
+		<a href='<c:url value="editcategory?id=${cate.c_id}"></c:url>' role="button" class="btn btn-primary" style="margin-right: 10px;">Edit</a>
+		<a href='<c:url value="deletecategory?id=${cate.c_id}"></c:url>' role="button" class="btn btn-danger" style="margin-right: 10px;">Delete</a>
 		</td>
 		</tr>
 		

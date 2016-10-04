@@ -35,7 +35,7 @@
 		</tr>
 		</thead>
 		
-		<tbody style="background-color: white;">
+		<tbody style="background-color: white;" align="center">
 		<c:forEach items="${supplier}" var="sp">
 		<tr>
 <%-- 		<td>${sp.id}</td> --%>
@@ -43,11 +43,10 @@
 		<td>${sp.haddress}</td>
 		<td>${sp.contact}</td>
 		<td colspan="2">
-		<ul class="nav nav-pills">
-		<li><a href='<c:url value="editsupplier_id=${sp.id}"></c:url>'>Edit</a></li>
-		<li><a href='<c:url value="deletesupplier_id=${sp.id}"></c:url>'>Delete</a></li>
-		<li><a href='<c:url value="viewsupplier_id=${sp.id}"></c:url>'>View</a></li>
-		</ul>
+		<a href='<c:url value="editsupplier?id=${sp.id}"></c:url>' class="btn btn-primary" role="button" style="margin-right: 10px;">Edit</a>
+		<a href='<c:url value="deletesupplier?id=${sp.id}"></c:url>' class="btn btn-danger" role="button" style="margin-right: 10px;">Delete</a>
+		<a href='<c:url value="viewsupplier?id=${sp.id}"></c:url>'class="btn btn-primary" role="button" style="margin-right: 10px;">View</a>
+		
 		</td>
 		</tr>
 		

@@ -46,11 +46,9 @@
 		<td>{{prod.qty}}</td>
 		<td>{{prod.price}}</td>
 		<td colspan="2">
-		<ul class="nav nav-pills">
-		<li><a href="editproduct-id={{prod.pid}}">Edit</a></li>
-		<li><a href="deleteproduct-id={{prod.pid}}">Delete</a></li>
-		<li><a href="productview-id={{prod.pid}}">View</a></li>
-		</ul>
+		<a role="button" href="editproduct?id={{prod.pid}}" class="btn btn-primary" style="margin-right: 10px">Edit</a>
+		<a class="btn btn-danger" role="button" href="deleteproduct?id={{prod.pid}}" style="margin-right: 10px">Delete</a>
+		<a class="btn btn-primary" role="button" href="productview?id={{prod.pid}}" style="margin-right: 10px">View</a>
 		</td>
 		</tr>
 		</tbody>

@@ -6,8 +6,7 @@
 <title>CD-STACK</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script
-	src="resources/js/jquery-3.1.1.min.js"></script>
+<script src="resources/js/jquery-3.1.1.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <style>
@@ -41,8 +40,18 @@ h5 {
 </style>
 </head>
 <body style="background-color: olive;">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="k"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="k"%>
+	<%@ taglib uri="http://www.springframework.org/security/tags"
+		prefix="sec"%>
+	<sec:authorize access="isAuthenticated()">
+		<div class="container-fluid">
+			<p
+				style="color: maroon; font-size: 35px; font-weight: bolder; font-family: cursive;"
+				align="right">Welcome ${name}</p>
+			<%-- 				<%String wel=(String)session.getAttribute("name");  --%>
+			<!-- 				out.print("Welcome "+wel);%></p> -->
+		</div>
+	</sec:authorize>
 
 	<div class="container-fluid">
 		<div class="row">
@@ -92,8 +101,8 @@ h5 {
 						<li><a href="categoryform">ADD CATEGORY</a></li>
 						<li><a href="category">VIEW CATEGORIES</a></li>
 					</ul></li>
-					
-					<li class="dropdown"><a class="dropdown-toggle"
+
+				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">SUPPLIER<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="supplierform">ADD SUPPLIER</a></li>
@@ -102,19 +111,29 @@ h5 {
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-			<sec:authorize access="isAnonymous()">
+				<sec:authorize access="isAnonymous()">
 
-				<li><a href="login">LOGIN</a></li>
-				 <li><a href="register">REGISTER</a></li>
-				 </sec:authorize>
-				 
-				 <sec:authorize access="isAuthenticated()">
-				 <li>
-				 <li><a href="#"><span
-						class="glyphicon glyphicon-shopping-cart"></span> CART</a></li>
-				 <li><a href="<k:url value="/logout"/>"> LOGOUT</a>
-				 </li>
-				 </sec:authorize>
+					<li><a href="login"><span
+							class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
+					<li><a href="register">REGISTER</a></li>
+				</sec:authorize>
+
+				<sec:authorize access="isAuthenticated()">
+					<li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>PROFILE<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a
+								href="view?name=${name}">VIEW
+									PROFILE</a></li>
+						</ul></li>
+					<li><a href="#"><span
+							class="glyphicon glyphicon-shopping-cart"></span> CART</a></li>
+					<li><a href="<k:url value="/logout"/>"> <span
+							class="glyphicon glyphicon-log-out"></span> LOGOUT
+					</a></li>
+				</sec:authorize>
 			</ul>
 		</div>
 		</nav>

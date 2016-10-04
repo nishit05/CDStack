@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -85,16 +86,16 @@ public class ProductController {
 		return mv;
 	}
 
-	@RequestMapping(value = "deleteproduct-id={id}", method = RequestMethod.GET)
-	public String DeleteProduct(@PathVariable("id") int id,RedirectAttributes rea) {
+	@RequestMapping(value = "deleteproduct", method = RequestMethod.GET)
+	public String DeleteProduct(@RequestParam("id") int id,RedirectAttributes rea) {
 		service.deleteProduct(id);
 		rea.addFlashAttribute("msgd", "Product Deleted Sucessfully");
 		return "redirect:products";
 
 	}
 
-	@RequestMapping(value = "productview-id={id}", method = RequestMethod.GET)
-	public ModelAndView ProductView(@PathVariable("id") int id) {
+	@RequestMapping(value = "productview", method = RequestMethod.GET)
+	public ModelAndView ProductView(@RequestParam("id") int id) {
 		Products p=service.getProductById(id);
 		ModelAndView mv=new ModelAndView("productview");
 		mv.addObject("prdet", p);
@@ -103,8 +104,8 @@ public class ProductController {
 		return mv;
 	}
 
-	@RequestMapping(value = "editproduct-id={id}", method = RequestMethod.GET)
-	public ModelAndView EditProductForm(@PathVariable("id") int id) {
+	@RequestMapping(value = "editproduct", method = RequestMethod.GET)
+	public ModelAndView EditProductForm(@RequestParam("id") int id) {
 		Products p = service.getProductById(id);
 		ModelAndView mv=new ModelAndView("editproduct");
 		mv.addObject("products", p);

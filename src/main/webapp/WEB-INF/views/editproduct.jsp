@@ -12,7 +12,14 @@ label {
 }
 </style>
 <script type="text/javascript" src="resources/js/angular.min.js"></script>
-<script type="text/javascript" src="resources/js/AngularJSController.js"></script>
+<script type="text/javascript">
+	var app = angular.module('App', []);
+	app.controller('ProductController', function($scope, $http) {
+		$http.get("cdata").then(function(response) {
+			$scope.Data = response.data;
+		});
+	});
+</script>
 <body>
 	<%@include file="header.jsp"%>
 	<div class="container" ng-app="App" ng-controller="ProductController">
@@ -45,9 +52,7 @@ label {
 			<form:select path="category" cssClass="form-control"
 				cssStyle="width:60%">
 				<form:option value="Select Option"></form:option>
-				<c:forEach items="${catlist}" var="cate">
-				<form:option value="${cate.name}"></form:option>
-				</c:forEach>
+				<form:option ng-repeat="cate in Data" value="{{cate.name}}"></form:option>
 			</form:select>
 			<br>
 			

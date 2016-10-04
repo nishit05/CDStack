@@ -19,16 +19,26 @@ public class Users {
 	private int u_id;
 
 	@NotEmpty(message = "Name Cannot be Empty")
-	@Pattern(regexp="^[A-Za-z]*$",message="Enter only Letters")
+	@Pattern(regexp = "^[A-Za-z]*$", message = "Enter only Letters")
 	private String name;
 	@NotEmpty(message = "Username Cannot be Empty")
 	private String username;
-	@Size(min=6,max=10,message="Password should 6-10 charcters long")
+	@Size(min = 6, max = 10, message = "Password should 6-10 charcters long")
 	private String password;
 	@NotEmpty(message = "Email Cannot be Empty")
-	@Pattern(regexp="^(.+)@(.+)$",message="Enter a valid Email id")
+	@Pattern(regexp = "^(.+)@(.+)$", message = "Enter a valid Email id")
 	private String email;
 	private boolean enabled = true;
+
+	private boolean newsletter;
+
+	public boolean isNewsletter() {
+		return newsletter;
+	}
+
+	public void setNewsletter(boolean newsletter) {
+		this.newsletter = newsletter;
+	}
 
 	@Transient
 	@NotEmpty(message = "This Field sholud be filled")
@@ -84,6 +94,17 @@ public class Users {
 
 	public boolean isEnabled() {
 		return enabled;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Users u=(Users) obj;
+		return (username==u.username);
+	}
+
+	@Override
+	public String toString() {
+		return  username;
 	}
 
 }

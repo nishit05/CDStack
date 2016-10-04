@@ -3,30 +3,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
-input[type=text]{
-width:60%;
+input[type=text] {
+	width: 60%;
 }
 
-input[type=email]{
-width:60%;
+input[type=email] {
+	width: 60%;
 }
 
-textarea
-{
-width:50%;
-
+textarea {
+	width: 50%;
 }
 
 label {
 	color: navy;
 }
-
 </style>
 <body>
 	<%@include file="header.jsp"%>
+	<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 	<div class="container">
-		<h1 style="color: navy; " align="center">REACH US</h1>
+		<h1 style="color: navy;" align="center">REACH US</h1>
 		<br>
 		<div class="row">
 
@@ -71,31 +70,61 @@ label {
 			</div>
 		</div>
 	</div>
-
+	<div class="container">
+<div class="alert-danger">
+		<center>
+			<strong style="font-size: 25px">${msge}</strong>
+		</center>
+	</div>
+	</div>
+	<div class="container">
+	<div class="alert-success">
+		<center>
+			<strong style="font-size: 25px">${msgs}</strong>
+		</center>
+	</div>
+	</div>
 	<div class="container">
 		<br>
 		<h1 align="center" style="color: navy;">QUERY?? JUST ASK US...</h1>
 		<br>
-		<form action="#">
-			<div class="form-group">
-				<label for="name" style="font-size: 25px" class="control-label col-sm-4">Name:</label> <input
-					type="text" id="name" class="form-control" style="font-size: 25px"
-					required> <br> <label for="email"
-					style="font-size: 25px" class="control-label col-sm-4">Email-id:</label> <input type="email"
-					id="email" class="form-control" style="font-size: 25px" required><br>
-				<label for="mno" style="font-size: 25px" class="control-label col-sm-4">Mobile Number:</label> <input
-					type="text" id="mno" class="form-control" style="font-size: 25px"
-					required> <br> <label for="q" style="font-size: 25px" class="control-label col-sm-2">Query:</label>
-				<textarea class="form-control" rows="5"></textarea>
-				<br>
-				<div class="container text-center">
-					<button class="btn btn-primary" type="submit"
-						style="margin-right: 20px; font-size: 25px">Submit</button>
+		<form:form action="${pageContext.request.contextPath}/addquery" commandName="query" method="post">
 
-					<button class="btn btn-danger" type="reset" style="font-size: 25px">Cancel</button>
-				</div>
+			<form:label path="name" style="font-size: 25px"
+				class="control-label col-sm-4">Name:</form:label>
+			<form:input path="name" class="form-control" style="font-size: 25px" />
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="name" cssStyle="color:maroon"></form:errors></font>
+			<br>
+
+			<form:label path="email"
+					style="font-size: 25px" class="control-label col-sm-4">Email-id:</form:label>
+			<form:input path="email" class="form-control" style="font-size: 25px" />
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="email" cssStyle="color:maroon"></form:errors></font>
+			<br>
+
+			<form:label path="mno" style="font-size: 25px"
+				class="control-label col-sm-4">Mobile Number:</form:label>
+			<form:input path="mno" class="form-control" style="font-size: 25px" />
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="mno" cssStyle="color:maroon"></form:errors></font>
+			<br>
+
+			<form:label path="query" style="font-size: 25px"
+				class="control-label col-sm-2">Query:</form:label>
+			<form:textarea path="query" class="form-control" rows="5"/>
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="query" cssStyle="color:maroon"></form:errors></font>
+
+			<br>
+			<div class="container text-center">
+				<button class="btn btn-primary" type="submit"
+					style="margin-right: 20px; font-size: 25px">Submit</button>
+
+				<button class="btn btn-danger" type="reset" style="font-size: 25px">Cancel</button>
 			</div>
-		</form>
+		</form:form>
 	</div>
 	<br>
 	<br>

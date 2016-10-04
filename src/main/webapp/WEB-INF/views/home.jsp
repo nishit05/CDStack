@@ -2,14 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <body>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-	<sec:authorize access="isAuthenticated()">
-	<div class="container-fluid">
-				<p style="color: maroon; font-size: 35px; font-weight: bolder; font-family: cursive;" align="right"><%String wel=(String)session.getAttribute("name"); 
-				out.print("Welcome "+wel);%></p>
-				</div></sec:authorize>
 	<%@include file="header.jsp"%>
 	<div class="container-fulid text-center">
 		<h1 style="color: navy;">LATEST BOLLYWOOD OFFERS</h1>

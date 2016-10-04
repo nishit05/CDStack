@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,6 +33,13 @@ public class CategoryController {
 	
 	@RequestMapping(value = "addcategory", method = RequestMethod.POST)
 	public String CategoryValidation(@ModelAttribute("category") Category c, BindingResult result, Model m,RedirectAttributes rea) {
+		int ct=0;
+		List<Category>cl=service.getAllCategory();
+		for(Category ca:cl)
+		{
+			if(ca.getName().equalsIgnoreCase(c.getName()))
+				ct++;
+		}
 		if (result.hasErrors()) {
 			return "categoryform";
 		}
@@ -40,7 +48,11 @@ public class CategoryController {
 			m.addAttribute("msge", "Enter a Valid Name");
 			return "categoryform";
 		}
-			
+		else if(ct!=0)
+		{
+			m.addAttribute("msge", "Category Already exists");
+			return "categoryform";
+		}
 		else {
 			
 			service.addCategory(c);
@@ -57,8 +69,8 @@ public class CategoryController {
 		return "category";
 	}
 	
-	@RequestMapping(value="deletecategory_id={id}",method=RequestMethod.GET)
-	public String DeleteCategory(@PathVariable("id")int id,RedirectAttributes rea)
+	@RequestMapping(value="deletecategory",method=RequestMethod.GET)
+	public String DeleteCategory(@RequestParam("id")int id,RedirectAttributes rea)
 	{
 		service.deleteCategory(id);
 		rea.addFlashAttribute("msgd","Category Deleted Successfully");
@@ -66,8 +78,8 @@ public class CategoryController {
 		
 	}
 	
-	@RequestMapping(value = "editcategory_id={id}", method = RequestMethod.GET)
-	public ModelAndView EditCategoryForm(@PathVariable("id")int id) {
+	@RequestMapping(value = "editcategory", method = RequestMethod.GET)
+	public ModelAndView EditCategoryForm(@RequestParam("id")int id) {
 		Category c=service.getCategoryById(id);
 		return new ModelAndView("editcategory", "category",c);
 	}

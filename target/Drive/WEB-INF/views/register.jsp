@@ -21,6 +21,7 @@ input.cpass {
 
 label {
 	color: navy;
+	font-size: 25px;
 }
 </style>
 <body>
@@ -56,30 +57,41 @@ label {
 			<form:label path="name" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Name</form:label>
 			<form:input path="name" cssClass="form-control" />
-			<form:errors path="name" cssStyle="color:black"></form:errors>
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="name" cssStyle="color:maroon"></form:errors></font>
 			<br>
 
 			<form:label path="email" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">E-mail</form:label>
 			<form:input path="email" cssClass="form-control" />
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="email" cssStyle="color:maroon"></form:errors></font>
 			<br>
 
+			<form:label path="newsletter" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">Newsletter Subscription</form:label>
+			<form:checkbox path="newsletter" cssClass="form-control" />
+			<br>
+			
 			<form:label path="username" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Username</form:label>
 			<form:input path="username" cssClass="form-control" />
-			<form:errors path="username" cssStyle="color:black"></form:errors>
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="username" cssStyle="color:maroon"></form:errors></font>
 			<br>
 
 			<form:label path="password" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Password</form:label>
 			<form:password path="password" cssClass="form-control" />
-			<form:errors path="password" cssStyle="color:black"></form:errors>
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="password" cssStyle="color:maroon"></form:errors></font>
 			<br>
 
 			<form:label path="cpass" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Confirm Password</form:label>
 			<form:password path="cpass" cssClass="form-control" />
-			<form:errors path="cpass" cssStyle="color:black"></form:errors>
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="cpass" cssStyle="color:maroon"></form:errors></font>
 			<br>
 
 			<div class="container text-center">

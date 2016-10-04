@@ -81,7 +81,7 @@ h5 {
 	<form class="form-inline">
 		Get deals: <input type="email" class="form-control" size="50"
 			placeholder="Email Address">
-		<button type="button" class="btn btn-danger">Sign Up</button>
+		<button type="button" class="btn btn-danger">Submit</button>
 	</form>
 	<h4 align="left" style="color: red;">&copy 2003 KiloNewton Web
 		services Ltd.</h4>
