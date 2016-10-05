@@ -28,7 +28,7 @@ public class Query {
 	@Pattern(regexp = "^(.+)@(.+)$", message = "Enter a valid Email id")
 	private String email;
 	
-	@NotNull
+	@NotNull(message="Number cannot be empty")
 	private long mno;
 	
 	@Column(length = 850)

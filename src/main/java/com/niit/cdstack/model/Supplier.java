@@ -7,6 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Supplier implements Serializable {
@@ -17,12 +22,15 @@ public class Supplier implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
+	@NotEmpty(message="Supplier name can't be empty")
 	private String sname;
 	
 	@Column(name="Address",length=1024)
+	@NotEmpty(message="Supplier Address can't be empty")
 	private String haddress;
 	
 	@Column(name="Contact",length=25)
+	@NotEmpty(message="Supplier contact can't be empty")
 	private String contact;
 
 	public int getId() {

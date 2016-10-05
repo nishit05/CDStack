@@ -106,7 +106,7 @@ label {
 
 			<form:label path="mno" style="font-size: 25px"
 				class="control-label col-sm-4">Mobile Number:</form:label>
-			<form:input path="mno" class="form-control" style="font-size: 25px" />
+			<form:input path="mno" cssClass="form-control" />
 			<font size="5" style="font-weight: bold;"><form:errors
 					path="mno" cssStyle="color:maroon"></form:errors></font>
 			<br>

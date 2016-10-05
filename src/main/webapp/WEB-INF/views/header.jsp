@@ -6,9 +6,9 @@
 <title>CD-STACK</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <script src="resources/js/jquery-3.1.1.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <style>
 /* Remove the navbar's default rounded borders and increase the bottom margin */
 .navbar {

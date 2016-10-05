@@ -37,8 +37,6 @@ public class ProductController {
 		ModelAndView mv=new ModelAndView("productform");
 		Products p=new Products();
 		mv.addObject(p);
-		List <Category>li=csi.getAllCategory();
-		mv.addObject("catlist", li);
 		return mv;
 	}
 
@@ -109,8 +107,6 @@ public class ProductController {
 		Products p = service.getProductById(id);
 		ModelAndView mv=new ModelAndView("editproduct");
 		mv.addObject("products", p);
-		List<Category> li=csi.getAllCategory();
-		mv.addObject("catlist", li);
 		return mv;
 	}
 
