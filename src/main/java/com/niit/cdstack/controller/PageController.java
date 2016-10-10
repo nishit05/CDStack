@@ -1,5 +1,7 @@
 package com.niit.cdstack.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -44,6 +47,11 @@ public class PageController {
 	{
 		if(result.hasErrors())
 			return "contact";
+		else if(Long.valueOf(q.getMno()).toString().length()!=10)
+		{
+			m.addAttribute("msge", "10-digit Mobile number only");
+			return "contact";
+		}
 		else
 		{
 			qsi.addQuery(q);
@@ -51,5 +59,23 @@ public class PageController {
 			return "redirect:contact";
 		}
 		
+	}
+	
+	@RequestMapping(value="viewquery",method=RequestMethod.GET)
+	public String viewQuery(Model mv)
+	{
+		List<Query>ql=qsi.viewQuries();
+		mv.addAttribute("qlist", ql);
+		return "query";
+	}
+	
+	@RequestMapping(value="deletequery",method=RequestMethod.GET)
+	public String deleteQuery(@RequestParam("id")String id,Model rea)
+	{
+		qsi.deleteQuery(id);
+		List<Query>ql=qsi.viewQuries();
+		rea.addAttribute("msgd", "Query Deleted Successfully");
+		rea.addAttribute("qlist", ql);
+		return "query";
 	}
 }

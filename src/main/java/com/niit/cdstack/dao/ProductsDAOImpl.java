@@ -37,7 +37,7 @@ public class ProductsDAOImpl implements ProductsDAO{
 	public List<Products> getAllProducts() {
 		// TODO Auto-generated method stub
 		Session s=sessionFactory.openSession();
-		List<Products>pl=s.createQuery("from Products").list();
+		List<Products>pl=s.createQuery("from Products order by category").list();
 		s.close();
 		return pl;
 	}

@@ -76,7 +76,12 @@ public class CustomerController {
 
 	@RequestMapping(value = "/loginfailure", method = RequestMethod.GET)
 	public ModelAndView LoginFail() {
-		return new ModelAndView("login", "error", true);
+		ModelAndView mv=new ModelAndView("login");
+		mv.addObject("error", true);
+		mv.addObject("access", false);
+		mv.addObject("accessdenied", "To access this please login");
+		return mv;
+//		return new ModelAndView("login", "error", true);
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

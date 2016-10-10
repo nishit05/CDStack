@@ -1,9 +1,11 @@
+com\niit\cdstack\dao\CartDAO.class
 com\niit\cdstack\service\CustomerServiceImpl.class
 com\niit\cdstack\dao\UserRoleDAOImpl.class
 com\niit\cdstack\service\UserRoleService.class
 com\niit\cdstack\controller\CustomerController.class
 com\niit\cdstack\service\CategoryServiceImpl.class
 com\niit\cdstack\service\SupplierServiceImpl.class
+com\niit\cdstack\controller\CartController.class
 com\niit\cdstack\dao\ProductsDAO.class
 com\niit\cdstack\controller\CategoryController.class
 com\niit\cdstack\dao\QueryDAOImpl.class
@@ -19,6 +21,7 @@ com\niit\cdstack\model\UserRoles.class
 com\niit\cdstack\controller\PageController.class
 com\niit\cdstack\service\SupplierService.class
 com\niit\cdstack\service\QueryService.class
+com\niit\cdstack\dao\CartDAOImpl.class
 com\niit\cdstack\service\QueryServiceImpl.class
 com\niit\cdstack\dao\SupplierDAOImpl.class
 com\niit\cdstack\dao\SupplierDAO.class
@@ -27,6 +30,7 @@ com\niit\cdstack\dao\ProductsDAOImpl.class
 com\niit\cdstack\service\ProductService.class
 com\niit\cdstack\controller\SupplierController.class
 com\niit\cdstack\service\CustomerService.class
+com\niit\cdstack\model\Cart.class
 com\niit\cdstack\model\Supplier.class
 com\niit\cdstack\service\UserRoleServiceImpl.class
 com\niit\cdstack\validations\IdGenerator.class

@@ -14,6 +14,11 @@ table {
 	<div class="container" ng-app="App" ng-controller="ProductController">
 		<br>
 		<h1 align="center" style="color: navy;">PRODUCT DETAILS</h1>
+		<%@ taglib uri="http://www.springframework.org/security/tags"
+		prefix="sec"%>
+		<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+		<%@ taglib prefix="form"
+			uri="http://www.springframework.org/tags/form"%>
 		<table class="table" style="width: 70%; height: 70%;" align="center">
 			<thead style="background-color: orange;">
 				<tr>
@@ -54,9 +59,17 @@ table {
 					<td>${prdet.price}</td>
 				</tr>
 
+				<tr>
+					<sec:authorize access="isAuthenticated()">
+					<td colspan="2">
+					<a role="button" class="btn btn-primary" href="addtocart?id=${prdet.pid}">
+					Add To Cart</a></td>
+					</sec:authorize>
+				</tr>
+
 			</tbody>
 		</table>
 	</div>
-	<%@include file="footer.jsp"  %>
+	<%@include file="footer.jsp"%>
 </body>
 </html>

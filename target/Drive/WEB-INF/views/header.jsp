@@ -128,7 +128,7 @@ h5 {
 								href="view?name=${name}">VIEW
 									PROFILE</a></li>
 						</ul></li>
-					<li><a href="#"><span
+					<li><a href="viewcart"><span
 							class="glyphicon glyphicon-shopping-cart"></span> CART</a></li>
 					<li><a href="<k:url value="/logout"/>"> <span
 							class="glyphicon glyphicon-log-out"></span> LOGOUT

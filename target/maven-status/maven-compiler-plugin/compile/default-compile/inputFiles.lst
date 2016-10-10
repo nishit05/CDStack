@@ -18,11 +18,15 @@ D:\Drive\src\main\java\com\niit\cdstack\dao\UserRoleDAOImpl.java
 D:\Drive\src\main\java\com\niit\cdstack\dao\QueryDAOImpl.java
 D:\Drive\src\main\java\com\niit\cdstack\controller\CustomerController.java
 D:\Drive\src\main\java\com\niit\cdstack\dao\QueryDAO.java
+D:\Drive\src\main\java\com\niit\cdstack\model\Cart.java
+D:\Drive\src\main\java\com\niit\cdstack\dao\CartDAOImpl.java
+D:\Drive\src\main\java\com\niit\cdstack\dao\CartDAO.java
 D:\Drive\src\main\java\com\niit\cdstack\dao\CustomerDAO.java
 D:\Drive\src\main\java\com\niit\cdstack\model\Query.java
 D:\Drive\src\main\java\com\niit\cdstack\controller\CategoryController.java
 D:\Drive\src\main\java\com\niit\cdstack\model\Products.java
 D:\Drive\src\main\java\com\niit\cdstack\service\QueryService.java
+D:\Drive\src\main\java\com\niit\cdstack\controller\CartController.java
 D:\Drive\src\main\java\com\niit\cdstack\dao\ProductsDAOImpl.java
 D:\Drive\src\main\java\com\niit\cdstack\model\Category.java
 D:\Drive\src\main\java\com\niit\cdstack\dao\CategoryDAOImpl.java
