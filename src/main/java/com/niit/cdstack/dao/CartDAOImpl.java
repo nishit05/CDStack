@@ -2,6 +2,7 @@ package com.niit.cdstack.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,6 +20,7 @@ public class CartDAOImpl implements CartDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
 	
 	@Override
 	public void addToCart(Cart ct) {
@@ -63,6 +65,7 @@ public class CartDAOImpl implements CartDAO {
 		// TODO Auto-generated method stub
 		Session s=sessionFactory.openSession();
 		Transaction t=s.beginTransaction();
+		System.out.println("Get Cart by Id calling");
 		Cart c=(Cart) s.load(Cart.class, id);
 		t.commit();
 		s.close();
@@ -70,14 +73,15 @@ public class CartDAOImpl implements CartDAO {
 		
 	}
 
-	@Override
-	public void updateQty(String id) {
+
+	public void updateCart(int qty,int id) {
 		// TODO Auto-generated method stub
 		Session s=sessionFactory.openSession();
 		Transaction t=s.beginTransaction();
-		Cart c=(Cart) s.load(Cart.class, id);
-		c.setQty(c.getQty());
-		s.update(c);
+		String qu="update Cart set qty="+qty+" where pid="+id;
+		Query q= s.createQuery(qu);
+		int p=q.executeUpdate();
+		System.out.println("Cart updated rows affected is "+p);
 		t.commit();
 		s.close();
 	}

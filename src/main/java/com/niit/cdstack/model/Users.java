@@ -19,7 +19,7 @@ public class Users {
 	private int u_id;
 
 	@NotEmpty(message = "Name Cannot be Empty")
-	@Pattern(regexp = "^[A-Za-z]*$", message = "Enter only Letters")
+	@Pattern(regexp = "^[A-Za-z\\s]*$", message = "Enter only Letters")
 	private String name;
 	@NotEmpty(message = "Username Cannot be Empty")
 	private String username;

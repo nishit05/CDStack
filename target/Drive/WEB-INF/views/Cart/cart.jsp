@@ -4,19 +4,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script src="resources/js/angular.min.js"></script>
-<script src="<c:url value='resources/js/AngularJSController.js'/>"></script>
 <script type="text/javascript">
-	var app = angular.module('App', []);
-	app.controller('ProductController', function($scope, $http) {
-		$http.get("ctdata").then(function(response) {
-			$scope.Data = response.data;
-		});
-	});
+var app=angular.model("App",[]);
+app.controller('Cartctrl',function($scope){
+	$scope.qty="1";
+});
 </script>
 <body>
 	<%@include file="../header.jsp"%>
 	<div class="container-fluid" ng-app="App"
-		ng-controller="ProductController">
+		ng-controller="Cartctrl">
 		<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="k"%>
 		<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 		<%@ taglib prefix="form"
@@ -41,7 +38,7 @@
 			align="center">
 			<thead style="background-color: orange;">
 				<tr>
-					<th>ID</th>
+					<th>PRODUCT ID</th>
 					<th>PRODUCT NAME</th>
 					<th>PRICE</th>
 					<th>QTY</th>
@@ -50,16 +47,23 @@
 			</thead>
 
 			<tbody style="background-color: white;" align="center">
-				<tr ng-repeat="cart in Data">
-					<td>{{cart.ct_id}}</td>
-					<td>{{cart.pname}}</td>
-					<td>{{cart.price}}</td>
-					<td><input type="text" class="form-control" style="width: 60%;" name="qty" value="{{cart.qty}}"/>
+			<k:forEach items="${clist}" var="cart">
+				<tr>
+					<td>${cart.pid}</td>
+					<td>${cart.pname}</td>
+					<td>${cart.price}</td>
+					<td>
+					<form action="updatecart" method="get">
+					<input type="hidden" name="id" value="${cart.ct_id}"/>
+					<input type="text" value="${cart.qty}" name="qty"/>
+					<input type="submit" value="Submit">
+					</form>
 					<td colspan="2"><a class="btn btn-danger" role="button"
- 						href="delete?id={{cart.ct_id}}" style="margin-right: 10px" 
+ 						href="delete?id=${cart.ct_id}&&name=${name}" style="margin-right: 10px" 
  						data-toggle="tooltip" title="Delete"><span class="glyphicon glyphicon-remove">
  						</span></a></td>
 								</tr>
+								</k:forEach>
 			</tbody>
 		</table>
 <!-- < 					<td colspan="2"><a role="button"  -->
@@ -75,10 +79,9 @@
 <!-- 							class="glyphicon glyphicon-eye-open" data-toggle="tooltip" -->
 <!-- 							title="View"></span></a></td> -->
 							
-							
+	</div>						
 			
 
-	</div>
 	<%@include file="../footer.jsp"%>
 
 </body>

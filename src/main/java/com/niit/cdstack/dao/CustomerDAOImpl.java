@@ -41,6 +41,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Transaction t=s.beginTransaction();
 		Users u=(Users) s.load(Users.class, new Integer(id));
 		t.commit();
+		s.close();
 		return u;
 	}
 
@@ -51,6 +52,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Transaction t=s.beginTransaction();
 		s.update(u);
 		t.commit();
+		s.close();
 	}
 
 	@Override

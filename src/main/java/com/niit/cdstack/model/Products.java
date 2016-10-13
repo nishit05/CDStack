@@ -22,7 +22,6 @@ public class Products implements Serializable {
 	private int pid;
 
 	@NotNull
-	@Min(value=10)
 	private int qty;
 
 	@NotEmpty(message = "Name cannot be empty")
@@ -31,7 +30,6 @@ public class Products implements Serializable {
 	private String ptype;
 
 	@NotNull
-	@Min(value=100)
 	private float price;
 
 	@NotEmpty(message = "Description cannot be empty")

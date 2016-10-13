@@ -40,15 +40,6 @@ label {
 			</div>
 		</y:if>
 
-	<y:if test="${not empty accessdenied}">
-			<div class="alert-success">
-				<center>
-					<strong style="font-size: 25px"><y:out
-							value="${Access Denied}"></y:out></strong>
-				</center>
-			</div>
-		</y:if>
-
 		<h1 style="color: navy;" align="center">LOGIN</h1>
 		<br>
 		<form action='<y:url value='j_spring_security_check'></y:url>'

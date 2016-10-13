@@ -62,7 +62,7 @@ table {
 				<tr>
 					<sec:authorize access="isAuthenticated()">
 					<td colspan="2">
-					<a role="button" class="btn btn-primary" href="addtocart?id=${prdet.pid}">
+					<a role="button" class="btn btn-primary" href="addtocart?id=${prdet.pid}&&name=${name}">
 					Add To Cart</a></td>
 					</sec:authorize>
 				</tr>

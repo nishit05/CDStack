@@ -13,5 +13,5 @@ public interface CartDAO {
 	List<Cart>cartList(int id);
 	void deleteFromCart(String id);
 	Cart getCartById(String id);
-	void updateQty(String id);
+	void updateCart(int qty,int id);
 }

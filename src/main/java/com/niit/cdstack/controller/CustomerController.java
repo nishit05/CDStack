@@ -48,7 +48,7 @@ public class CustomerController {
 		int ct=0;
 		List<Users>l=service.getAllUsers();
 		for(Users ur:l){
-			if(ur.getEmail().equalsIgnoreCase(u.getEmail()))
+			if(ur.getEmail().equalsIgnoreCase(u.getEmail()) || ur.getUsername().equalsIgnoreCase(u.getUsername()))
 				ct++;
 		}
 		if (result.hasErrors()) {
@@ -79,7 +79,7 @@ public class CustomerController {
 		ModelAndView mv=new ModelAndView("login");
 		mv.addObject("error", true);
 		mv.addObject("access", false);
-		mv.addObject("accessdenied", "To access this please login");
+//		mv.addObject("accessdenied", "To access this please login");
 		return mv;
 //		return new ModelAndView("login", "error", true);
 	}
@@ -91,7 +91,7 @@ public class CustomerController {
 		if (auth != null) {
 			new SecurityContextLogoutHandler().logout(request, response, auth);
 		}
-
+		session.invalidate();
 		rea.addFlashAttribute("logoutmsg", "Logged Out Successfully");
 		return "redirect:login";
 	}
@@ -137,6 +137,7 @@ public class CustomerController {
 			return "edituser";
 		} else {
 			service.updateUsers(u);
+			session.setAttribute("name", u.getUsername());
 			m.addAttribute("msgu", "Customer Details Updated Successfully");
 			return "viewprofile";
 		}

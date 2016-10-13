@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -22,6 +23,9 @@ public class Cart implements Serializable{
 	private int qty;
 	private double price;
 	private int u_id;
+	
+	@Transient
+	private double total;
 	
 	public String getCt_id() {
 		return ct_id;
@@ -58,5 +62,11 @@ public class Cart implements Serializable{
 	}
 	public void setU_id(int u_id) {
 		this.u_id = u_id;
+	}
+	public double getTotal() {
+		return total;
+	}
+	public void setTotal(double total) {
+		this.total = total;
 	}
 }
