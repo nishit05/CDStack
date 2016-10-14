@@ -74,11 +74,11 @@ public class CartDAOImpl implements CartDAO {
 	}
 
 
-	public void updateCart(int qty,int id) {
+	public void updateCart(int qty,int id,int uid) {
 		// TODO Auto-generated method stub
 		Session s=sessionFactory.openSession();
 		Transaction t=s.beginTransaction();
-		String qu="update Cart set qty="+qty+" where pid="+id;
+		String qu="update Cart set qty="+qty+" where pid="+id+"and u_id="+uid;
 		Query q= s.createQuery(qu);
 		int p=q.executeUpdate();
 		System.out.println("Cart updated rows affected is "+p);

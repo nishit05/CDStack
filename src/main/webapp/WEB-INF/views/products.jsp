@@ -47,14 +47,14 @@
 					<td>{{prod.ptype}}</td>
 					<td>{{prod.qty}}</td>
 					<td>{{prod.price}}</td>
-					<td colspan="2"><a role="button"
+					<td colspan="2"><sec:authorize access="hasRole('ROLE_ADMIN')"><a role="button"
 						href="editproduct?id={{prod.pid}}" class="btn btn-primary"
 						style="margin-right: 10px" data-toggle="tooltip" title="Edit"><span
 							class="glyphicon glyphicon-pencil"></span></a> 
 							
 							<a class="btn btn-danger" role="button"
 						href="deleteproduct?id={{prod.pid}}" style="margin-right: 10px" data-toggle="tooltip" title="Delete"><span
-							class="glyphicon glyphicon-remove"></span></a>
+							class="glyphicon glyphicon-remove"></span></a></sec:authorize>
 						
 						<a class="btn btn-primary" role="button"
 						href="productview?id={{prod.pid}}" style="margin-right: 10px"><span

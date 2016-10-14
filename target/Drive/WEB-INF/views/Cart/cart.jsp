@@ -52,18 +52,27 @@ app.controller('Cartctrl',function($scope){
 					<td>${cart.pid}</td>
 					<td>${cart.pname}</td>
 					<td>${cart.price}</td>
-					<td>
-					<form action="updatecart" method="get">
-					<input type="hidden" name="id" value="${cart.ct_id}"/>
-					<input type="text" value="${cart.qty}" name="qty"/>
-					<input type="submit" value="Submit">
-					</form>
-					<td colspan="2"><a class="btn btn-danger" role="button"
- 						href="delete?id=${cart.ct_id}&&name=${name}" style="margin-right: 10px" 
+						<td>
+							<form action="updatecart" method="get">
+							
+								<input type="hidden" name="id" value="${cart.pid}" /> 
+								<input type="hidden" name="name" value="${name}" /> 
+								<input type="hidden" name="uid" value="${cart.u_id}" /> 
+								<input type="text" value="${cart.qty}" name="qty" style="width: 20%"/> 
+								<input type="submit" value="Update" class="btn btn-primary" style="margin-left: 10px">
+							</form>
+						</td>
+						<td colspan="2">
+						<a class="btn btn-danger" role="button"
+ 						href="delete?id=${cart.ct_id}&&name=${name}&&pid=${cart.pid}&&qty=${cart.qty}" style="margin-right: 10px" 
  						data-toggle="tooltip" title="Delete"><span class="glyphicon glyphicon-remove">
  						</span></a></td>
 								</tr>
 								</k:forEach>
+								<tr>
+								<td colspan="3" style="font-weight: bold;">TOTAL</td>
+								<td style="font-weight: bold;">${total}</td>
+								</tr>
 			</tbody>
 		</table>
 <!-- < 					<td colspan="2"><a role="button"  -->

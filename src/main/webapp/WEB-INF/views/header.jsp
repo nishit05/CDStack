@@ -87,32 +87,39 @@ h5 {
 						class="glyphicon glyphicon-home"></span>HOME</a></li>
 				<li><a href="aboutus">ABOUT US</a></li>
 				<li><a href="contact">CONTACT US</a></li>
-				<li><a href="viewquery">QUERIES</a></li>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<li><a href="viewquery">QUERIES</a></li></sec:authorize>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">PRODUCTS <span class="caret"></span></a>
 					<ul class="dropdown-menu">
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li><a href="productform">ADD PRODUCTS</a></li>
+						</sec:authorize>
 						<li><a href="products">VIEW PRODUCTS</a></li>
 					</ul></li>
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown">CATEGORIES<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="categoryform">ADD CATEGORY</a></li>
-						<li><a href="category">VIEW CATEGORIES</a></li>
-					</ul></li>
-
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown">SUPPLIER<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="supplierform">ADD SUPPLIER</a></li>
-						<li><a href="supplier">VIEW SUPPLIERS'</a></li>
-					</ul></li>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown">CATEGORIES<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="categoryform">ADD CATEGORY</a></li>
+							<li><a href="category">VIEW CATEGORIES</a></li>
+						</ul></li>
+				</sec:authorize>
+				
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown">SUPPLIER<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="supplierform">ADD SUPPLIER</a></li>
+							<li><a href="supplier">VIEW SUPPLIERS'</a></li>
+						</ul></li>
+				</sec:authorize>
 			</ul>
 
-			
-			
+
+
 			<ul class="nav navbar-nav navbar-right">
 				<sec:authorize access="isAnonymous()">
 
@@ -129,8 +136,8 @@ h5 {
 						<ul class="dropdown-menu">
 							<li><a href="view?name=${name}">VIEW PROFILE</a></li>
 						</ul></li>
-					<li><a href="viewcart?name=${name}"><span
-							class="glyphicon glyphicon-shopping-cart"></span> CART</a></li>
+					<sec:authorize access="hasRole('ROLE_USER')"><li><a href="viewcart?name=${name}"><span
+							class="glyphicon glyphicon-shopping-cart"></span> CART <span class="badge">${num}</span></a></li></sec:authorize>
 					<li><a href="<k:url value="/logout"/>"> <span
 							class="glyphicon glyphicon-log-out"></span> LOGOUT
 					</a></li>

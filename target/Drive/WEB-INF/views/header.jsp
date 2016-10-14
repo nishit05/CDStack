@@ -103,16 +103,18 @@ h5 {
 						<li><a href="category">VIEW CATEGORIES</a></li>
 					</ul></li>
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown">SUPPLIER<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="supplierform">ADD SUPPLIER</a></li>
-						<li><a href="supplier">VIEW SUPPLIERS'</a></li>
-					</ul></li>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown">SUPPLIER<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="supplierform">ADD SUPPLIER</a></li>
+							<li><a href="supplier">VIEW SUPPLIERS'</a></li>
+						</ul></li>
+				</sec:authorize>
 			</ul>
 
-			
-			
+
+
 			<ul class="nav navbar-nav navbar-right">
 				<sec:authorize access="isAnonymous()">
 
@@ -130,7 +132,7 @@ h5 {
 							<li><a href="view?name=${name}">VIEW PROFILE</a></li>
 						</ul></li>
 					<li><a href="viewcart?name=${name}"><span
-							class="glyphicon glyphicon-shopping-cart"></span> CART</a></li>
+							class="glyphicon glyphicon-shopping-cart"></span> CART <%-- 	<span class="badge">${num}</span>--%></a></li>
 					<li><a href="<k:url value="/logout"/>"> <span
 							class="glyphicon glyphicon-log-out"></span> LOGOUT
 					</a></li>
