@@ -6,9 +6,21 @@
 
 
 <var name="ct" class="com.niit.cdstack.model.Cart"/>
+<action-state id="processCheckout">
+<transition on="submit" to="billingaddress"/>
+</action-state>
 
+<view-state id="billingaddress" view="billing.jsp">
+<transition on="submit" to="paymentmethod"/>
+</view-state>
 
+<view-state id="paymentmethod" view="payment">
+<transition on="submit" to="thankyou"/>
+</view-state>
 
+<view-state id="thankyou" view="thankyou.jsp">
+<transition to="finalstate"/>
+</view-state>
 
-
+<end-state id="finalstate"></end-state>
 </flow>

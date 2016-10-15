@@ -7,11 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Supplier implements Serializable {
@@ -33,6 +35,8 @@ public class Supplier implements Serializable {
 	@NotEmpty(message="Supplier contact can't be empty")
 	private String contact;
 
+	@Transient
+	private MultipartFile file;
 	public int getId() {
 		return id;
 	}
@@ -63,6 +67,14 @@ public class Supplier implements Serializable {
 
 	public void setContact(String contact) {
 		this.contact = contact;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	
 }

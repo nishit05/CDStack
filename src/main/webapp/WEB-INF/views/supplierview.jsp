@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
-p{
-color: navy;
+p {
+	color: navy;
 }
 
 table {
@@ -12,8 +12,8 @@ table {
 }
 </style>
 <body>
-<%@include file="header.jsp"%>
-<div class="container">
+	<%@include file="header.jsp"%>
+	<div class="container">
 		<br>
 		<h1 align="center" style="color: navy;">SUPPLIER DETAILS</h1>
 		<table class="table" style="width: 70%; height: 70%;" align="center">
@@ -25,7 +25,11 @@ table {
 			</thead>
 
 			<tbody style="background-color: white;" align="center">
-				<tr">
+				<tr>
+					<td colspan="2"><img src="resources/multipart/${spdet.sname}.jpg"
+						alt="Movie" style="width: 250px; height: 250px;" align="middle"></td>
+				</tr>
+				<tr>
 					<td>Supplier ID</td>
 					<td>${spdet.id}</td>
 				</tr>
@@ -49,6 +53,6 @@ table {
 			</tbody>
 		</table>
 	</div>
-<%@include file="footer.jsp"  %>
+	<%@include file="footer.jsp"%>
 </body>
 </html>

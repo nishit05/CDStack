@@ -31,8 +31,9 @@ label {
 			uri="http://www.springframework.org/tags/form"%>
 
 
-		<form:form action="${pageContext.request.contextPath}/addsupplier"
-			method="post" commandName="supplier">
+		<form:form
+			action="${pageContext.request.contextPath}/addsupplier?${_csrf.parameterName}=${_csrf.token}"
+			method="post" commandName="supplier" enctype="multipart/form-data">
 
 
 			<form:label path="sname" cssClass="control-label col-sm-4"
@@ -48,6 +49,11 @@ label {
 			<form:errors path="haddress" cssStyle="color:black"></form:errors>
 			<br>
 
+			<form:label path="file" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">Logo</form:label>
+			<form:input path="file" type="file" />
+			<br>
+			
 			<form:label path="contact" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Contact No.</form:label>
 			<form:input path="contact" cssClass="form-control" />

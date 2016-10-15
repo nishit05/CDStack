@@ -31,11 +31,12 @@ label {
 		<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 		<%@ taglib prefix="form"
 			uri="http://www.springframework.org/tags/form"%>
-			<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+		<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-		<form:form action="${pageContext.request.contextPath}/updateproduct"
-			method="post" commandName="products">
+		<form:form
+			action="${pageContext.request.contextPath}/updateproduct?${_csrf.parameterName}=${_csrf.token}"
+			method="post" commandName="products" enctype="multipart/form-data">
 
 			<form:hidden path="pid" cssClass="form-control" />
 			<form:errors path="pid" cssStyle="color:black"></form:errors>
@@ -55,7 +56,7 @@ label {
 				<form:option ng-repeat="cate in Data" value="{{cate.name}}"></form:option>
 			</form:select>
 			<br>
-			
+
 			<form:label path="ptype" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">CD-Type</form:label>
 			<form:select path="ptype" cssClass="form-control"
@@ -78,7 +79,11 @@ label {
 			<form:input path="price" cssClass="form-control" />
 			<form:errors path="price" cssStyle="color:black"></form:errors>
 			<br>
-
+			
+			<form:label path="file" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">Image</form:label>
+			<form:input path="file" type="file" />
+			<br>
 			<form:label path="content" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Description</form:label>
 			<form:textarea path="content" cssClass="form-control" rows="5"

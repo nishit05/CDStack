@@ -107,7 +107,6 @@ h5 {
 							<li><a href="category">VIEW CATEGORIES</a></li>
 						</ul></li>
 				</sec:authorize>
-				
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown">SUPPLIER<span class="caret"></span></a>

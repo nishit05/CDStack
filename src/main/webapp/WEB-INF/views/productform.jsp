@@ -5,7 +5,6 @@
 <style>
 input[type=text] {
 	width: 60%;
-	
 }
 
 label {
@@ -49,15 +48,16 @@ label {
 			uri="http://www.springframework.org/tags/form"%>
 
 
-		<form:form action="${pageContext.request.contextPath}/addproducts"
-			method="post" commandName="products">
+		<form:form action="${pageContext.request.contextPath}/addproducts?${_csrf.parameterName}=${_csrf.token}"
+			method="post" commandName="products" enctype="multipart/form-data">
 
 
 
 			<form:label path="pname" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Product-Name</form:label>
 			<form:input path="pname" cssClass="form-control" />
-			<form:errors path="pname" cssStyle="font-size:25px; color:maroon;font-weight:bolder"></form:errors>
+			<form:errors path="pname"
+				cssStyle="font-size:25px; color:maroon;font-weight:bolder"></form:errors>
 			<br>
 
 			<form:label path="category" cssClass="control-label col-sm-4"
@@ -83,21 +83,30 @@ label {
 			<form:label path="qty" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Quantity</form:label>
 			<form:input path="qty" cssClass="form-control" />
-			<form:errors path="qty" cssStyle="font-size:25px;color:maroon;font-weight:bolder"></form:errors>
+			<form:errors path="qty"
+				cssStyle="font-size:25px;color:maroon;font-weight:bolder"></form:errors>
 			<br>
 
 			<form:label path="price" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Price</form:label>
 			<form:input path="price" cssClass="form-control" />
-			<form:errors path="price" cssStyle="font-size:25px;color:maroon;font-weight:bolder"></form:errors>
+			<form:errors path="price"
+				cssStyle="font-size:25px;color:maroon;font-weight:bolder"></form:errors>
 			<br>
-	
+
+			<form:label path="file" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">Image</form:label>
+			<form:input path="file" type="file" />
+			<br>
+			
 			<form:label path="content" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Description</form:label>
 			<form:textarea path="content" cssClass="form-control" rows="5"
 				cols="30" />
-			<form:errors path="content" cssStyle="font-size:25px; color:maroon; font-weight:bolder"></form:errors>
+			<form:errors path="content"
+				cssStyle="font-size:25px; color:maroon; font-weight:bolder"></form:errors>
 			<br>
+			
 			<div class="container text-center">
 				<button class="btn btn-primary" type="submit"
 					style="margin-right: 20px; font-size: 25px">Submit</button>

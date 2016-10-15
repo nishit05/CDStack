@@ -28,6 +28,10 @@ table {
 			</thead>
 
 			<tbody style="background-color: white;" align="center">
+			<tr>
+			<td>Movie Image</td>
+			<td ><img src="resources/multipart/${prdet.pname}.jpg" alt="Movie" style="width: 150px; height: 150px;"></td>
+			</tr>
 				<tr>
 					<td>Movie ID</td>
 					<td>${prdet.pid}</td>
@@ -60,7 +64,7 @@ table {
 				</tr>
 
 				<tr>
-					<sec:authorize access="isAuthenticated()">
+					<sec:authorize access="hasRole('ROLE_USER')">
 					<td colspan="2">
 					<a role="button" class="btn btn-primary" href="addtocart?id=${prdet.pid}&&name=${name}">
 					Add To Cart</a></td>

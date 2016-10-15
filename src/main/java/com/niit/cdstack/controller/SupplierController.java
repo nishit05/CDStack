@@ -1,5 +1,10 @@
 package com.niit.cdstack.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -24,48 +29,64 @@ public class SupplierController {
 	@Autowired
 	private SupplierServiceImpl service;
 
-	@RequestMapping(value = "supplierform", method = RequestMethod.GET)
+	@RequestMapping(value = "/supplierform", method = RequestMethod.GET)
 	public String SupplierForm(Map<String, Object> model) {
 		Supplier sp = new Supplier();
 		model.put("supplier", sp);
 		return "supplierform";
 	}
 
-	@RequestMapping(value = "addsupplier", method = RequestMethod.POST)
-	public String SupplierValidation(@ModelAttribute("supplier") Supplier sp, BindingResult result, Model m,RedirectAttributes rea) {
-		int ct=0,gt=0;
-		List<Supplier> sl=service.getAllSupplier();
-		for(Supplier s:sl)
-		{
-			if(s.getSname().equalsIgnoreCase(sp.getSname()))
+	@RequestMapping(value = "/addsupplier", method = RequestMethod.POST)
+	public String SupplierValidation(@ModelAttribute("supplier") Supplier sp, BindingResult result, Model m,
+			RedirectAttributes rea) {
+		int ct = 0, gt = 0;
+		List<Supplier> sl = service.getAllSupplier();
+		for (Supplier s : sl) {
+			if (s.getSname().equalsIgnoreCase(sp.getSname()))
 				ct++;
 		}
-		char ch[]=sp.getContact().toCharArray();
-		for(char l:ch)
-		{
-			if(!Character.isDigit(l))
+		char ch[] = sp.getContact().toCharArray();
+		for (char l : ch) {
+			if (!Character.isDigit(l))
 				gt++;
 		}
 		if (result.hasErrors()) {
 			return "supplierform";
 		}
 
-		else if(gt!=0 || sp.getContact().length()!=10)
-		{
+		else if (gt != 0 || sp.getContact().length() != 10) {
 			m.addAttribute("msge", "Mobile number not Valid");
 			return "supplierform";
 		}
-		
-		else if(ct!=0)
-		{
+
+		else if (ct != 0) {
 			m.addAttribute("msge", "Supplier Already Exists");
 			return "supplierform";
 		}
-		
-		
-		else {
 
-			service.addSupplier(sp);
+		else {
+			if (!sp.getFile().isEmpty()) {
+				service.addSupplier(sp);
+				File d = new File("D:/Drive/src/main/webapp/resources/multipart/");
+				if (!d.exists())
+					d.mkdirs();
+				File f = new File(d, sp.getSname() + ".jpg");
+				try {
+					BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(f));
+					bos.write(sp.getFile().getBytes());
+					bos.close();
+					System.out.println("Upload Sucessful");
+				} catch (FileNotFoundException fne) {
+					// TODO Auto-generated catch block
+					System.out.println("Upload Unsucessful because " + fne.getMessage());
+				} catch (IOException ioe) {
+					// TODO Auto-generated catch block
+					System.out.println("Upload Unsucessful because " + ioe.getMessage());
+				}
+			} else {
+				m.addAttribute("msge", "Please Upload an Image");
+				return "supplierform";
+			}
 			rea.addFlashAttribute("msgc", "Supplier added sucessfully!!!!");
 			return "redirect:supplierform";
 		}
@@ -79,7 +100,7 @@ public class SupplierController {
 	}
 
 	@RequestMapping(value = "deletesupplier", method = RequestMethod.GET)
-	public String DeleteSupplier(@RequestParam("id") int id,RedirectAttributes rea) {
+	public String DeleteSupplier(@RequestParam("id") int id, RedirectAttributes rea) {
 		service.deleteSupplier(id);
 		rea.addFlashAttribute("msgd", "Supplier Deleted Sucessfully");
 		return "redirect:supplier";
@@ -100,30 +121,51 @@ public class SupplierController {
 	}
 
 	@RequestMapping(value = "updatesupplier", method = RequestMethod.POST)
-	public String UpdateSupplier(@ModelAttribute("supplier") Supplier sp, BindingResult result, Model m,RedirectAttributes rea) {
+	public String UpdateSupplier(@ModelAttribute("supplier") Supplier sp, BindingResult result, Model m,
+			RedirectAttributes rea) {
 		if (result.hasErrors()) {
 			return "editsupplier";
 		}
 
 		else if (sp.getSname().isEmpty()) {
 			m.addAttribute("msge", "Enter a Valid Name");
-			return "editsupplier";	
-		} 
-		
-		else if(sp.getHaddress().isEmpty())
-		{
-			m.addAttribute("msge", "Enter a Valid Address");
-			return "editsupplier";	
+			return "editsupplier";
 		}
-		
-		else if(sp.getContact().isEmpty() || sp.getContact().length()!=10)
-		{
+
+		else if (sp.getHaddress().isEmpty()) {
+			m.addAttribute("msge", "Enter a Valid Address");
+			return "editsupplier";
+		}
+
+		else if (sp.getContact().isEmpty() || sp.getContact().length() != 10) {
 			m.addAttribute("msge", "Enter a Valid Contact Number");
-			return "editsupplier";	
+			return "editsupplier";
 		}
 
 		else {
-			service.updateSupplier(sp);
+			if (!sp.getFile().isEmpty()) {
+				service.updateSupplier(sp);
+				File d = new File("D:/Drive/src/main/webapp/resources/multipart/");
+				if (!d.exists())
+					d.mkdirs();
+				File f = new File(d, sp.getSname() + ".jpg");
+				try {
+					BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(f));
+					bos.write(sp.getFile().getBytes());
+					bos.close();
+					System.out.println("Upload Sucessful");
+				} catch (FileNotFoundException fne) {
+					// TODO Auto-generated catch block
+					System.out.println("Upload Unsucessful because " + fne.getMessage());
+				} catch (IOException ioe) {
+					// TODO Auto-generated catch block
+					System.out.println("Upload Unsucessful because " + ioe.getMessage());
+				}
+			} else {
+				m.addAttribute("msge", "Please Upload an Image");
+				return "editsupplier";
+			}
+
 			rea.addFlashAttribute("msgu", "Supplier Details Upadated Sucessfully");
 			return "redirect:supplier";
 		}

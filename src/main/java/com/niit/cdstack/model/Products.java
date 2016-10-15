@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Products implements Serializable {
@@ -40,6 +42,9 @@ public class Products implements Serializable {
 	
 	private String category;
 
+	@Transient
+	private MultipartFile file;
+	
 	public String getCategory() {
 		return category;
 	}
@@ -94,6 +99,14 @@ public class Products implements Serializable {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 
 }

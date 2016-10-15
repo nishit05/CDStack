@@ -28,6 +28,9 @@ table {
 			</thead>
 
 			<tbody style="background-color: white;" align="center">
+			<tr>
+			<td colspan="2"><img src="resources/multipart/${prdet.pname}.jpg" alt="Movie" style="width: 250px; height: 250px;" align="middle"></td>
+			</tr>
 				<tr>
 					<td>Movie ID</td>
 					<td>${prdet.pid}</td>

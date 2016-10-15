@@ -79,11 +79,15 @@ public class CustomerController {
 		ModelAndView mv=new ModelAndView("login");
 		mv.addObject("error", true);
 		mv.addObject("access", false);
-//		mv.addObject("accessdenied", "To access this please login");
 		return mv;
-//		return new ModelAndView("login", "error", true);
 	}
 
+	@RequestMapping(value="/accessforbidden",method=RequestMethod.GET)
+	public String AccessDenial(Model m)
+	{
+		m.addAttribute("msgad", "You are not permitted to access the page");
+		return "home";
+	}
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String Logout(HttpServletRequest request, HttpServletResponse response, RedirectAttributes rea) {
 		System.out.println("In The Log out method");

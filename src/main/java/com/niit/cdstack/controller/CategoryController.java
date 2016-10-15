@@ -24,14 +24,14 @@ public class CategoryController {
 	@Autowired
 	private CategoryServiceImpl service;
 	
-	@RequestMapping(value = "categoryform", method = RequestMethod.GET)
+	@RequestMapping(value = "/categoryform", method = RequestMethod.GET)
 	public String CategoryForm(Map<String, Object> model) {
 		Category c = new Category();
 		model.put("category", c);
 		return "categoryform";
 	}
 	
-	@RequestMapping(value = "addcategory", method = RequestMethod.POST)
+	@RequestMapping(value = "/addcategory", method = RequestMethod.POST)
 	public String CategoryValidation(@ModelAttribute("category") Category c, BindingResult result, Model m,RedirectAttributes rea) {
 		int ct=0;
 		List<Category>cl=service.getAllCategory();
