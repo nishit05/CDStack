@@ -23,6 +23,17 @@
 				</center>
 			</div>
 		</div>
+
+			<div class="container" align="center">
+			<form>
+				<input type="text"  style="width: 50%; box-sizing: border-box; padding: 10px 10px;"
+					name="name" ng-model="search.pname"
+					placeholder="Find Product" />
+					<button class="btn btn-default" type="button" style="padding: 10px 10px;"><span class="glyphicon glyphicon-search"></span></button>
+					
+					</form>
+			</div>
+<br>
 		<h1 align="center" style="color: navy;">AVAILABLE PRODUCTS</h1>
 		<br>
 		<table class="table table-bordered" style="width: 70%; height: 70%;"
@@ -40,26 +51,27 @@
 			</thead>
 
 			<tbody style="background-color: white;" align="center">
-				<tr ng-repeat="prod in Data">
-					<!-- 		<td>{{prod.pid}}</td> -->
+				<tr ng-repeat="prod in Data|filter:search">
+
 					<td>{{prod.pname}}</td>
 					<td>{{prod.category}}</td>
 					<td>{{prod.ptype}}</td>
 					<td>{{prod.qty}}</td>
 					<td>{{prod.price}}</td>
-					<td colspan="2"><sec:authorize access="hasRole('ROLE_ADMIN')"><a role="button"
-						href="editproduct?id={{prod.pid}}" class="btn btn-primary"
-						style="margin-right: 10px" data-toggle="tooltip" title="Edit"><span
-							class="glyphicon glyphicon-pencil"></span></a> 
-							
+					<td colspan="2"><sec:authorize access="hasRole('ROLE_ADMIN')">
+							<a role="button" href="editproduct?id={{prod.pid}}"
+								class="btn btn-primary" style="margin-right: 10px"
+								data-toggle="tooltip" title="Edit"><span
+								class="glyphicon glyphicon-pencil"></span></a>
+
 							<a class="btn btn-danger" role="button"
-						href="deleteproduct?id={{prod.pid}}" style="margin-right: 10px" data-toggle="tooltip" title="Delete"><span
-							class="glyphicon glyphicon-remove"></span></a></sec:authorize>
-						
-						<a class="btn btn-primary" role="button"
+								href="deleteproduct?id={{prod.pid}}" style="margin-right: 10px"
+								data-toggle="tooltip" title="Delete"><span
+								class="glyphicon glyphicon-remove"></span></a>
+						</sec:authorize> <a class="btn btn-primary" role="button"
 						href="productview?id={{prod.pid}}" style="margin-right: 10px"><span
-							class="glyphicon glyphicon-eye-open" data-toggle="tooltip" title="View"></span></a>
-					</td>
+							class="glyphicon glyphicon-eye-open" data-toggle="tooltip"
+							title="View"></span></a></td>
 				</tr>
 			</tbody>
 		</table>

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <script src="resources/js/jquery-3.1.1.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/angular.min.js"></script>
 <style>
 /* Remove the navbar's default rounded borders and increase the bottom margin */
 .navbar {
@@ -48,11 +49,9 @@ h5 {
 			<p
 				style="color: maroon; font-size: 35px; font-weight: bolder; font-family: cursive;"
 				align="right">Welcome ${name}</p>
-			<%-- 				<%String wel=(String)session.getAttribute("name");  --%>
-			<!-- 				out.print("Welcome "+wel);%></p> -->
 		</div>
 	</sec:authorize>
-
+	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-4">
@@ -68,6 +67,7 @@ h5 {
 				<p style="font-family: sans-serif; font-size: 20px; color: navy;">The
 					Online DVD-VCD store</p>
 			</div>
+
 		</div>
 	</div>
 
@@ -88,13 +88,14 @@ h5 {
 				<li><a href="aboutus">ABOUT US</a></li>
 				<li><a href="contact">CONTACT US</a></li>
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<li><a href="viewquery">QUERIES</a></li></sec:authorize>
+					<li><a href="viewquery">QUERIES</a></li>
+				</sec:authorize>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">PRODUCTS <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<li><a href="productform">ADD PRODUCTS</a></li>
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<li><a href="productform">ADD PRODUCTS</a></li>
 						</sec:authorize>
 						<li><a href="products">VIEW PRODUCTS</a></li>
 					</ul></li>
@@ -135,8 +136,11 @@ h5 {
 						<ul class="dropdown-menu">
 							<li><a href="view?name=${name}">VIEW PROFILE</a></li>
 						</ul></li>
-					<sec:authorize access="hasRole('ROLE_USER')"><li><a href="viewcart?name=${name}"><span
-							class="glyphicon glyphicon-shopping-cart"></span> CART <span class="badge">${num}</span></a></li></sec:authorize>
+					<sec:authorize access="hasRole('ROLE_USER')">
+						<li><a href="viewcart?name=${name}"><span
+								class="glyphicon glyphicon-shopping-cart"></span> CART <span
+								class="badge">${num}</span></a></li>
+					</sec:authorize>
 					<li><a href="<k:url value="/logout"/>"> <span
 							class="glyphicon glyphicon-log-out"></span> LOGOUT
 					</a></li>

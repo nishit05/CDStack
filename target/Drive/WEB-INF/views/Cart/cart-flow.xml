@@ -6,6 +6,7 @@
 
 
 <var name="ct" class="com.niit.cdstack.model.Cart"/>
+
 <action-state id="processCheckout">
 <transition on="submit" to="billingaddress"/>
 </action-state>

@@ -5,6 +5,13 @@
 <body>
 	<%@include file="header.jsp"%>
 	<div class="container-fulid text-center">
+	<div class="container">
+	<div class="alert-danger">
+			<center>
+				<strong style="font-size: 25px">${msgad}</strong>
+			</center>
+		</div>
+		</div>
 		<h1 style="color: navy;">LATEST BOLLYWOOD OFFERS</h1>
 	</div>
 	<br>

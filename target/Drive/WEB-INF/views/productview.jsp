@@ -29,8 +29,7 @@ table {
 
 			<tbody style="background-color: white;" align="center">
 			<tr>
-			<td>Movie Image</td>
-			<td ><img src="resources/multipart/${prdet.pname}.jpg" alt="Movie" style="width: 150px; height: 150px;"></td>
+			<td colspan="2"><img src="resources/multipart/${prdet.pname}.jpg" alt="Movie" style="width: 250px; height: 250px;" align="middle"></td>
 			</tr>
 				<tr>
 					<td>Movie ID</td>

@@ -43,9 +43,9 @@ public class CategoryController {
 		if (result.hasErrors()) {
 			return "categoryform";
 		}
-		
-		else if (c.getName().isEmpty()) {
-			m.addAttribute("msge", "Enter a Valid Name");
+		else if(c.getName().isEmpty())
+		{
+			m.addAttribute("msge", "Category name cannot be empty");
 			return "categoryform";
 		}
 		else if(ct!=0)

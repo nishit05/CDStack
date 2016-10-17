@@ -47,6 +47,7 @@ public class ProductController {
 		return mv;
 	}
 
+	
 	@RequestMapping(value = "/addproducts", method = RequestMethod.POST)
 	public String ProductValidation(@Valid @ModelAttribute("products") Products p, BindingResult result, Model m,
 			RedirectAttributes rea, HttpServletRequest req) {
@@ -104,18 +105,6 @@ public class ProductController {
 				m.addAttribute("msge","Please Upload an Image");
 				return "productform";
 			}
-			//			File f=new File(req.getServletContext().getRealPath("/resources/images/")+p.getPid()+".jpg");
-//			if(!p.getFile().isEmpty())
-//			{
-//				try {
-//					FileUtils.writeByteArrayToFile(f, p.getFile().getBytes());
-//					System.out.println("Image Uploaded");
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-			
 			rea.addFlashAttribute("msg", "Product Added Successfully");
 			return "redirect:productform";
 			}
@@ -140,7 +129,6 @@ public class ProductController {
 		mv.addObject("product", list);
 		return mv;
 	}
-
 	@RequestMapping(value = "deleteproduct", method = RequestMethod.GET)
 	public String DeleteProduct(@RequestParam("id") int id, RedirectAttributes rea) {
 		service.deleteProduct(id);

@@ -71,8 +71,9 @@
 				<tr>
 					<td colspan="3" style="font-weight: bold;">TOTAL</td>
 					<td style="font-weight: bold;">${total}</td>
+					
 					<td><form:form role="form" action="${pageContext.request.contextPath}/billing">
-							<input type="submit" name="_eventId_submit" value="Checkout"
+							<input type="submit" name="cart_checkout" value="Checkout"
 								class="btn btn-primary">
 						</form:form></td>
 				</tr>
