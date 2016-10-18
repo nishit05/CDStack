@@ -5,23 +5,33 @@
                           http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
 
-<var name="ct" class="com.niit.cdstack.model.Cart"/>
+	<var name="ct" class="com.niit.cdstack.model.Cart" />
+	<var name="order" class="com.niit.cdstack.model.Order" />
+	<var name="shippingaddress" class="com.niit.cdstack.model.ShippingAddress" />
 
-<action-state id="processCheckout">
-<transition on="submit" to="billingaddress"/>
-</action-state>
 
-<view-state id="billingaddress" view="billing.jsp">
-<transition on="submit" to="paymentmethod"/>
-</view-state>
+	<view-state id="billingdetails" view="Cart/billing" model="shippingaddress">
+		<transition on="submit" to="address" />
+	</view-state>
 
-<view-state id="paymentmethod" view="payment">
-<transition on="submit" to="thankyou"/>
-</view-state>
+	<action-state id="address">
+		<evaluate expression="webflowController.addShippingAddress(shippingaddress)"></evaluate>
+		<transition to="confirmation"></transition>
+	</action-state>
 
-<view-state id="thankyou" view="thankyou.jsp">
-<transition to="finalstate"/>
-</view-state>
+	<view-state id="confirmation" view="Cart/confirm">
+		<transition on="submit" to="paymentmethod" />
+		<transition on="back" to="billingdetails" />
+	</view-state>
 
-<end-state id="finalstate"></end-state>
+	<view-state id="paymentmethod" view="Cart/payment" model="order">
+		<transition on="submit" to="thankyou" />
+		<transition on="back" to="billingdetails"></transition>
+	</view-state>
+
+	<view-state id="thankyou" view="Cart/thankyou">
+		<transition on="back" to="finalstate" />
+	</view-state>
+
+	<end-state id="finalstate" view="home"></end-state>
 </flow>

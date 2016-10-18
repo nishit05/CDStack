@@ -39,25 +39,31 @@ label {
 			<form:label path="sname" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Supplier-Name</form:label>
 			<form:input path="sname" cssClass="form-control" />
-			<form:errors path="sname" cssStyle="color:black"></form:errors>
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="sname" cssClass="error" cssStyle="color:maroon;"></form:errors></font>
 			<br>
+
 
 			<form:label path="haddress" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Address</form:label>
 			<form:textarea path="haddress" cssClass="form-control" rows="5"
 				cols="30" />
-			<form:errors path="haddress" cssStyle="color:black"></form:errors>
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="haddress" cssClass="error" cssStyle="color:maroon;"></form:errors></font>
 			<br>
+
 
 			<form:label path="file" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Logo</form:label>
 			<form:input path="file" type="file" />
 			<br>
-			
+
+
 			<form:label path="contact" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Contact No.</form:label>
 			<form:input path="contact" cssClass="form-control" />
-			<form:errors path="contact" cssStyle="color:black"></form:errors>
+			<font size="5" style="font-weight: bold;"><form:errors
+					path="contact" cssClass="error" cssStyle="color:maroon;font:bold"></form:errors></font>
 			<br>
 
 

@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.cdstack.model.Category;
 import com.niit.cdstack.model.Products;
-import com.niit.cdstack.validations.IdGenerator;
+import com.niit.cdstack.webflow.IdGenerator;
 
 @Repository
 @Transactional

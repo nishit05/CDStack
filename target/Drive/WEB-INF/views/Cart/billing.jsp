@@ -7,21 +7,8 @@ input[type=text] {
 	width: 60%;
 }
 
-input[type=email] {
-	width: 60%;
-}
-
-input[type=password] {
-	width: 60%;
-}
-
-input.cpass {
-	text-align: left;
-}
-
 label {
 	color: navy;
-	font-size: 25px;
 }
 </style>
 <body>
@@ -34,76 +21,60 @@ label {
 		</div>
 		<div class="alert-success">
 			<center>
-				<strong style="font-size: 25px">${msgs}</strong>
+				<strong style="font-size: 25px">${msgc}</strong>
 			</center>
 		</div>
-		<h1 style="color: navy;" align="center">Billing Address</h1>
+		<h1 style="color: navy;" align="center">ADD SUPPLIER</h1>
 		<br> <br>
-
-
 		<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 		<%@ taglib prefix="form"
 			uri="http://www.springframework.org/tags/form"%>
 
 
-		<form:form role="form" method="post" commandName="users">
+		<form:form commandName="order">
 
-			<form:hidden path="u_id" cssClass="form-control" />
-			<form:errors path="u_id" cssStyle="color:black"></form:errors>
-			<br>
 
 			<form:label path="name" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Name</form:label>
 			<form:input path="name" cssClass="form-control" />
-			<font size="5" style="font-weight: bold;"><form:errors
-					path="name" cssStyle="color:maroon"></form:errors></font>
 			<br>
 
-			<form:label path="email" cssClass="control-label col-sm-4"
-				cssStyle="font-size: 25px">E-mail</form:label>
-			<form:input path="email" cssClass="form-control" />
-			<font size="5" style="font-weight: bold;"><form:errors
-					path="email" cssStyle="color:maroon"></form:errors></font>
+			<form:label path="address" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">Address</form:label>
+			<form:textarea path="address" cssClass="form-control" rows="5"
+				cols="30" />
 			<br>
 
-			<form:label path="newsletter" cssClass="control-label col-sm-4"
-				cssStyle="font-size: 25px">Newsletter Subscription</form:label>
-			<form:checkbox path="newsletter" cssClass="form-control" />
+			<form:label path="city" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">City</form:label>
+			<form:input path="city" cssClass="form-control" />
 			<br>
 
-			<form:label path="username" cssClass="control-label col-sm-4"
-				cssStyle="font-size: 25px">Username</form:label>
-			<form:input path="username" cssClass="form-control" />
-			<font size="5" style="font-weight: bold;"><form:errors
-					path="username" cssStyle="color:maroon"></form:errors></font>
+
+			<form:label path="state" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">State</form:label>
+			<form:input path="state" cssClass="form-control" />
 			<br>
 
-			<form:label path="password" cssClass="control-label col-sm-4"
-				cssStyle="font-size: 25px">Password</form:label>
-			<form:password path="password" cssClass="form-control" />
-			<font size="5" style="font-weight: bold;"><form:errors
-					path="password" cssStyle="color:maroon"></form:errors></font>
+			<form:label path="pincode" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">Pin Code</form:label>
+			<form:input path="pincode" cssClass="form-control" />
 			<br>
 
-			<form:label path="cpass" cssClass="control-label col-sm-4"
-				cssStyle="font-size: 25px">Confirm Password</form:label>
-			<form:password path="cpass" cssClass="form-control" />
-			<font size="5" style="font-weight: bold;"><form:errors
-					path="cpass" cssStyle="color:maroon"></form:errors></font>
+			<form:label path="price" cssClass="control-label col-sm-4"
+				cssStyle="font-size: 25px">Price</form:label>
+			<form:input path="price" cssClass="form-control" />
 			<br>
 			
-			<input type="hidden" name="_flowExecutionKey"
-				value="${flowExecutionKey} " />
-				
 			<div class="container text-center">
-				<input class="btn btn-primary" type="submit" name="_eventId_submit"
-					style="margin-right: 20px; font-size: 25px" value="Proceed">
+				<button class="btn btn-primary" type="submit" name="_eventId_submit"
+					style="margin-right: 20px; font-size: 25px">Submit</button>
 
 				<button class="btn btn-danger" type="reset" style="font-size: 25px">Cancel</button>
-				<br> <br>
 			</div>
 		</form:form>
 	</div>
+	<div class="form-group"></div>
 	<%@include file="../footer.jsp"%>
 </body>
 </html>

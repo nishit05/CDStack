@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.cdstack.model.Cart;
 import com.niit.cdstack.model.Products;
+import com.niit.cdstack.model.ShippingAddress;
 
 @Repository
 @Transactional
@@ -86,5 +87,13 @@ public class CartDAOImpl implements CartDAO {
 		s.close();
 	}
 
-	
+	public boolean addShippingAddress(ShippingAddress sa)
+	{
+		Session s=sessionFactory.openSession();
+		Transaction t=s.beginTransaction();
+		s.save(sa);
+		t.commit();
+		s.close();
+		return true;
+	}
 }

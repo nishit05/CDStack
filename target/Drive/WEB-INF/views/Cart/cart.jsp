@@ -71,27 +71,15 @@
 				<tr>
 					<td colspan="3" style="font-weight: bold;">TOTAL</td>
 					<td style="font-weight: bold;">${total}</td>
-					
-					<td><form:form role="form" action="${pageContext.request.contextPath}/billing">
-							<input type="submit" name="cart_checkout" value="Checkout"
-								class="btn btn-primary">
-						</form:form></td>
 				</tr>
 			</tbody>
 		</table>
-		<!-- < 					<td colspan="2"><a role="button"  -->
-		<!-- 						href="editproduct?id={{prod.pid}}" class="btn btn-primary" -->
-		<!-- 						style="margin-right: 10px" data-toggle="tooltip" title="Edit"><span -->
-		<!-- 							class="glyphicon glyphicon-pencil"></span></a> <a -->
-		<!-- 						class="btn btn-danger" role="button" -->
-		<!-- 						href="deleteproduct?id={{prod.pid}}" style="margin-right: 10px" -->
-		<!-- 						data-toggle="tooltip" title="Delete"><span -->
-		<!-- 							class="glyphicon glyphicon-remove"></span></a> <a -->
-		<!-- 						class="btn btn-primary" role="button" -->
-		<!-- 						href="productview?id={{prod.pid}}" style="margin-right: 10px"><span -->
-		<!-- 							class="glyphicon glyphicon-eye-open" data-toggle="tooltip" -->
-		<!-- 							title="View"></span></a></td> -->
 
+		<div class="container text-center">
+			<a href="checkout" role="button" class="btn btn-primary" style="margin-right: 15px;">Checkout</a>
+			<a href="products" role="button" class="btn btn-primary">Continue
+				Shopping</a>
+		</div>
 	</div>
 
 

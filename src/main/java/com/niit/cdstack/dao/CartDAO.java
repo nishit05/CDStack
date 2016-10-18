@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.niit.cdstack.model.Cart;
+import com.niit.cdstack.model.ShippingAddress;
 
 @Repository
 public interface CartDAO {
@@ -14,4 +15,5 @@ public interface CartDAO {
 	void deleteFromCart(String id);
 	Cart getCartById(String id);
 	void updateCart(int qty,int id,int uid);
+	boolean addShippingAddress(ShippingAddress sa);
 }

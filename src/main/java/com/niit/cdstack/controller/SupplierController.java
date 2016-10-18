@@ -8,12 +8,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,7 +38,7 @@ public class SupplierController {
 	}
 
 	@RequestMapping(value = "/addsupplier", method = RequestMethod.POST)
-	public String SupplierValidation(@ModelAttribute("supplier") Supplier sp, BindingResult result, Model m,
+	public String SupplierValidation(@Valid @ModelAttribute("supplier") Supplier sp, BindingResult result, Model m,
 			RedirectAttributes rea) {
 		int ct = 0, gt = 0;
 		List<Supplier> sl = service.getAllSupplier();
@@ -53,12 +54,7 @@ public class SupplierController {
 		if (result.hasErrors()) {
 			return "supplierform";
 		}
-
-		else if (gt != 0 || sp.getContact().length() != 10) {
-			m.addAttribute("msge", "Mobile number not Valid");
-			return "supplierform";
-		}
-
+		
 		else if (ct != 0) {
 			m.addAttribute("msge", "Supplier Already Exists");
 			return "supplierform";
@@ -123,23 +119,24 @@ public class SupplierController {
 	@RequestMapping(value = "updatesupplier", method = RequestMethod.POST)
 	public String UpdateSupplier(@ModelAttribute("supplier") Supplier sp, BindingResult result, Model m,
 			RedirectAttributes rea) {
+		int ct = 0, gt = 0;
+		List<Supplier> sl = service.getAllSupplier();
+		for (Supplier s : sl) {
+			if (s.getSname().equalsIgnoreCase(sp.getSname()))
+				ct++;
+		}
+		char ch[] = sp.getContact().toCharArray();
+		for (char l : ch) {
+			if (!Character.isDigit(l))
+				gt++;
+		}
 		if (result.hasErrors()) {
-			return "editsupplier";
+			return "supplierform";
 		}
-
-		else if (sp.getSname().isEmpty()) {
-			m.addAttribute("msge", "Enter a Valid Name");
-			return "editsupplier";
-		}
-
-		else if (sp.getHaddress().isEmpty()) {
-			m.addAttribute("msge", "Enter a Valid Address");
-			return "editsupplier";
-		}
-
-		else if (sp.getContact().isEmpty() || sp.getContact().length() != 10) {
-			m.addAttribute("msge", "Enter a Valid Contact Number");
-			return "editsupplier";
+		
+		else if (ct != 0) {
+			m.addAttribute("msge", "Supplier Already Exists");
+			return "supplierform";
 		}
 
 		else {

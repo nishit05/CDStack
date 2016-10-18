@@ -102,9 +102,8 @@ public class CartController {
 		for (Cart c : cl) {
 			sum = sum + (c.getQty() * c.getPrice());
 		}
-
+		session.setAttribute("total", sum);
 		mv.addObject("clist", cl);
-		mv.addObject("total", sum);
 		return mv;
 	}
 

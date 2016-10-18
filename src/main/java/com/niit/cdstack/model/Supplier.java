@@ -31,7 +31,8 @@ public class Supplier implements Serializable {
 	@NotEmpty(message="Supplier Address can't be empty")
 	private String haddress;
 	
-	@Column(name="Contact",length=25)
+	@Column(name="Contact")
+	@Pattern(regexp="^[789]\\d{9}",message="Enter 10 digit numeric mobile number starting with 7,8 or 9")
 	@NotEmpty(message="Supplier contact can't be empty")
 	private String contact;
 

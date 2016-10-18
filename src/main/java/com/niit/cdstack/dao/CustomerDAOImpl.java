@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.cdstack.model.Products;
 import com.niit.cdstack.model.UserRoles;
 import com.niit.cdstack.model.Users;
 
