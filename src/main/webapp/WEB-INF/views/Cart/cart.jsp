@@ -54,10 +54,13 @@
 						<td>
 							<form action="updatecart" method="get">
 
-								<input type="hidden" name="id" value="${cart.pid}" /> <input
-									type="hidden" name="name" value="${name}" /> <input
-									type="hidden" name="uid" value="${cart.u_id}" /> <input
-									type="text" value="${cart.qty}" name="qty" style="width: 20%" />
+								<input type="hidden" name="id" value="${cart.pid}" /> 
+								<input type="hidden" name="name" value="${name}" /> 
+								<input type="hidden" name="uid" value="${cart.u_id}" /> 
+								
+								<input type="text" value="${cart.qty}" name="qty" style="width: 20%"
+									pattern="[1-9]{1}" title="Enter Digits greater than 0" required="true" />
+									
 								<input type="submit" value="Update" class="btn btn-primary"
 									style="margin-left: 10px">
 							</form>
@@ -76,9 +79,9 @@
 		</table>
 
 		<div class="container text-center">
-			<a href="checkout" role="button" class="btn btn-primary" style="margin-right: 15px;">Checkout</a>
-			<a href="products" role="button" class="btn btn-primary">Continue
-				Shopping</a>
+			<a href="checkout" role="button" class="btn btn-primary"
+				style="margin-right: 15px;">Checkout</a> <a href="products"
+				role="button" class="btn btn-primary">Continue Shopping</a>
 		</div>
 	</div>
 

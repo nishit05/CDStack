@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.cdstack.model.Cart;
+import com.niit.cdstack.model.Order;
 import com.niit.cdstack.model.Products;
 import com.niit.cdstack.model.ShippingAddress;
 
@@ -92,6 +93,17 @@ public class CartDAOImpl implements CartDAO {
 		Session s=sessionFactory.openSession();
 		Transaction t=s.beginTransaction();
 		s.save(sa);
+		t.commit();
+		s.close();
+		return true;
+	}
+
+	@Override
+	public boolean addOrder(Order o) {
+		// TODO Auto-generated method stub
+		Session s=sessionFactory.openSession();
+		Transaction t=s.beginTransaction();
+		s.save(o);
 		t.commit();
 		s.close();
 		return true;

@@ -11,13 +11,9 @@
 
 
 	<view-state id="billingdetails" view="Cart/billing" model="shippingaddress">
-		<transition on="submit" to="address" />
+		<transition on="submit" to="confirmation" />
 	</view-state>
 
-	<action-state id="address">
-		<evaluate expression="webflowController.addShippingAddress(shippingaddress)"></evaluate>
-		<transition to="confirmation"></transition>
-	</action-state>
 
 	<view-state id="confirmation" view="Cart/confirm">
 		<transition on="submit" to="paymentmethod" />
@@ -25,10 +21,16 @@
 	</view-state>
 
 	<view-state id="paymentmethod" view="Cart/payment" model="order">
-		<transition on="submit" to="thankyou" />
+		<transition on="submit" to="processorder" />
 		<transition on="back" to="billingdetails"></transition>
 	</view-state>
 
+	<action-state id="processorder">
+	<evaluate expression="webflowController.addOrder(shippingaddress,order)"></evaluate>
+		<transition on="added" to="thankyou"></transition>
+		<transition on="not added" to="paymentmethod"></transition>
+	</action-state>
+	
 	<view-state id="thankyou" view="Cart/thankyou">
 		<transition on="back" to="finalstate" />
 	</view-state>

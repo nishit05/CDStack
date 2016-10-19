@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,7 +25,7 @@ public class Products implements Serializable {
 	private int pid;
 
 	@NotNull
-	
+	@Min(value=10)
 	private int qty;
 
 	@NotEmpty(message = "Name cannot be empty")

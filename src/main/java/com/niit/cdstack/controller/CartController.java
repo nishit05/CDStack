@@ -70,6 +70,7 @@ public class CartController {
 		for (Cart ct : cl) {
 			sum = sum + (ct.getQty() * ct.getPrice());
 		}
+		session.setAttribute("total", sum);
 		//session.setAttribute("num", n);
 		
 		mv.addObject("total", sum);

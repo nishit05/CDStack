@@ -2,7 +2,6 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <style>
 input[type=text] {
 	width: 60%;
@@ -16,7 +15,6 @@ label {
 	color: navy;
 }
 </style>
-
 <body>
 	<%@include file="../header.jsp"%>
 	<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -24,8 +22,7 @@ label {
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="po"%>
 	<div class="container">
 		<h1 style="color: navy;" align="center">Payment Details</h1>
-		<br>
-		<font size="5" style="font-weight: bold;">
+		<br> <font size="5" style="font-weight: bold;">
 			<center>
 				<label style="font-size: 25px;">Amount to be paid is
 					${total}</label>
@@ -38,12 +35,12 @@ label {
 				cssStyle="font-size: 25px">Card Type</form:label>
 			<form:select path="paytype" cssClass="form-control"
 				cssStyle="width:60%" name="paytype">
-				<form:option value="Select Option"></form:option>
+				<form:option value="Select Card"></form:option>
 				<form:option value="Credit Card"></form:option>
 				<form:option value="Debit Card"></form:option>
 			</form:select>
 			<br>
-			
+
 			<font size="5" style="font-weight: bold;"> <label
 				style="font-size: 25px" class="control-label col-sm-4">Card
 					number</label></font>
