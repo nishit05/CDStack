@@ -19,6 +19,7 @@ com\niit\cdstack\model\Products.class
 com\niit\cdstack\dao\CategoryDAOImpl.class
 com\niit\cdstack\model\UserRoles.class
 com\niit\cdstack\controller\PageController.class
+com\niit\cdstack\webflow\WebflowController.class
 com\niit\cdstack\service\SupplierService.class
 com\niit\cdstack\service\QueryService.class
 com\niit\cdstack\dao\CartDAOImpl.class
@@ -35,6 +36,7 @@ com\niit\cdstack\service\CustomerService.class
 com\niit\cdstack\model\Cart.class
 com\niit\cdstack\webflow\IdGenerator.class
 com\niit\cdstack\model\Supplier.class
+com\niit\cdstack\model\ShippingAddress.class
 com\niit\cdstack\service\UserRoleServiceImpl.class
 com\niit\cdstack\model\Users.class
 com\niit\cdstack\dao\CustomerDAO.class

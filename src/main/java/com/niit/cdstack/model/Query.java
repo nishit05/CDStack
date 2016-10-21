@@ -29,6 +29,7 @@ public class Query {
 	private String email;
 	
 	@NotNull(message="Number cannot be empty")
+	@Pattern(regexp="^[789]\\d{9}",message="Enter 10 digit numeric mobile number starting with 7,8 or 9")
 	private long mno;
 	
 	@Column(length = 850)

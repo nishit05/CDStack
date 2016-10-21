@@ -52,7 +52,6 @@ label {
 			method="post" commandName="products" enctype="multipart/form-data">
 
 
-
 			<form:label path="pname" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Product-Name</form:label>
 			<form:input path="pname" cssClass="form-control" />

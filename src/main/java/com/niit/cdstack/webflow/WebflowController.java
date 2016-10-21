@@ -3,6 +3,7 @@ package com.niit.cdstack.webflow;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.text.Document;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -48,7 +49,7 @@ public class WebflowController {
 				return "not added";
 			} else {
 				double price = (double) hs.getAttribute("total");
-				String add = sa.getAddress() + "\n" + sa.getCity() + sa.getPincode() + "\n" + sa.getState();
+				String add = sa.getAddress() + "\n" + sa.getCity() + " "+sa.getPincode() + "\n" + sa.getState();
 				o.setShippingaddress(add);
 				o.setPrice(price);
 				o.setName(sa.getName());

@@ -41,21 +41,16 @@ public class PageController {
 		mv.addObject(q);
 		return mv;
 	}
-
-	@RequestMapping(value="addquery",method=RequestMethod.POST)
-	public String addQuery(@Valid @ModelAttribute("query")Query q,BindingResult result,RedirectAttributes rea,Model m)
+	
+	@RequestMapping(value="${pageContext.request.contextPath}/addquery",method=RequestMethod.POST)
+	public String addQuery(@Valid @ModelAttribute("query")Query q,BindingResult result,Model m)
 	{
 		if(result.hasErrors())
 			return "contact";
-		else if(Long.valueOf(q.getMno()).toString().length()!=10)
-		{
-			m.addAttribute("msge", "10-digit Mobile number only");
-			return "contact";
-		}
 		else
 		{
 			qsi.addQuery(q);
-			rea.addFlashAttribute("msgs", "Query Submitted Successfully");
+			m.addAttribute("msgs", "Query Submitted Successfully");
 			return "redirect:contact";
 		}
 		

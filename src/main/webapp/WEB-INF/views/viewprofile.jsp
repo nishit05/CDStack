@@ -32,7 +32,7 @@ table {
 					<td>User ID</td>
 					<td>${users.u_id}</td>
 				</tr>
-
+				
 				<tr>
 					<td>Name</td>
 					<td>${users.name}</td>

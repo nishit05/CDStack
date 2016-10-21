@@ -127,7 +127,8 @@ public class CustomerController {
 	@RequestMapping(value = "edit", method = RequestMethod.GET)
 	public ModelAndView EditForm(@RequestParam("id") int id) {
 		Users u = service.getUserById(id);
-		ModelAndView mv = new ModelAndView("edituser", "users", u);
+		ModelAndView mv = new ModelAndView("edituser");
+		mv.addObject("users", u);
 		return mv;
 	}
 

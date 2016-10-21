@@ -71,61 +71,65 @@ label {
 		</div>
 	</div>
 	<div class="container">
-<div class="alert-danger">
-		<center>
-			<strong style="font-size: 25px">${msge}</strong>
-		</center>
-	</div>
-	</div>
-	<div class="container">
-	<div class="alert-success">
-		<center>
-			<strong style="font-size: 25px">${msgs}</strong>
-		</center>
-	</div>
+		<div class="alert-danger">
+			<center>
+				<strong style="font-size: 25px">${msge}</strong>
+			</center>
+		</div>
 	</div>
 	<div class="container">
-		<br>
-		<h1 align="center" style="color: navy;">QUERY?? JUST ASK US...</h1>
-		<br>
-		<form:form action="${pageContext.request.contextPath}/addquery" commandName="query" method="post">
-
-			<form:label path="name" style="font-size: 25px"
-				class="control-label col-sm-4">Name:</form:label>
-			<form:input path="name" class="form-control" style="font-size: 25px" />
-			<font size="5" style="font-weight: bold;"><form:errors
-					path="name" cssStyle="color:maroon"></form:errors></font>
-			<br>
-
-			<form:label path="email"
-					style="font-size: 25px" class="control-label col-sm-4">Email-id:</form:label>
-			<form:input path="email" class="form-control" style="font-size: 25px" />
-			<font size="5" style="font-weight: bold;"><form:errors
-					path="email" cssStyle="color:maroon"></form:errors></font>
-			<br>
-
-			<form:label path="mno" style="font-size: 25px"
-				class="control-label col-sm-4">Mobile Number:</form:label>
-			<form:input path="mno" cssClass="form-control" />
-			<font size="5" style="font-weight: bold;"><form:errors
-					path="mno" cssStyle="color:maroon"></form:errors></font>
-			<br>
-
-			<form:label path="query" style="font-size: 25px"
-				class="control-label col-sm-2">Query:</form:label>
-			<form:textarea path="query" class="form-control" rows="5"/>
-			<font size="5" style="font-weight: bold;"><form:errors
-					path="query" cssStyle="color:maroon"></form:errors></font>
-
-			<br>
-			<div class="container text-center">
-				<button class="btn btn-primary" type="submit"
-					style="margin-right: 20px; font-size: 25px">Submit</button>
-
-				<button class="btn btn-danger" type="reset" style="font-size: 25px">Cancel</button>
-			</div>
-		</form:form>
+		<div class="alert-success">
+			<center>
+				<strong style="font-size: 25px">${msgs}</strong>
+			</center>
+		</div>
 	</div>
+	<sec:authorize access="hasRole('ROLE_USER')">
+		<div class="container">
+			<br>
+			<h1 align="center" style="color: navy;">QUERY?? JUST ASK US...</h1>
+			<br>
+			<form:form action="addquery"
+				commandName="query" method="post">
+
+				<form:label path="name" style="font-size: 25px"
+					class="control-label col-sm-4">Name:</form:label>
+				<form:input path="name" class="form-control" style="font-size: 25px" />
+				<font size="5" style="font-weight: bold;"><form:errors
+						path="name" cssStyle="color:maroon"></form:errors></font>
+				<br>
+
+				<form:label path="email" style="font-size: 25px"
+					class="control-label col-sm-4">Email-id:</form:label>
+				<form:input path="email" class="form-control"
+					style="font-size: 25px" />
+				<font size="5" style="font-weight: bold;"><form:errors
+						path="email" cssStyle="color:maroon"></form:errors></font>
+				<br>
+
+				<form:label path="mno" style="font-size: 25px"
+					class="control-label col-sm-4">Mobile Number:</form:label>
+				<form:input path="mno" cssClass="form-control" />
+				<font size="5" style="font-weight: bold;"><form:errors
+						path="mno" cssStyle="color:maroon"></form:errors></font>
+				<br>
+
+				<form:label path="query" style="font-size: 25px"
+					class="control-label col-sm-2">Query:</form:label>
+				<form:textarea path="query" class="form-control" rows="5" />
+				<font size="5" style="font-weight: bold;"><form:errors
+						path="query" cssStyle="color:maroon"></form:errors></font>
+
+				<br>
+				<div class="container text-center">
+					<button class="btn btn-primary" type="submit"
+						style="margin-right: 20px; font-size: 25px">Submit</button>
+
+					<button class="btn btn-danger" type="reset" style="font-size: 25px">Cancel</button>
+				</div>
+			</form:form>
+		</div>
+	</sec:authorize>
 	<br>
 	<br>
 	<%@include file="footer.jsp"%>

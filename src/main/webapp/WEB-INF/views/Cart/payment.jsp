@@ -21,7 +21,15 @@ label {
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="po"%>
 	<div class="container">
+	<div class="container">
+			<div class="alert-danger">
+				<center>
+					<strong style="font-size: 25px">${msge}</strong>
+				</center>
+			</div>
+		</div>
 		<h1 style="color: navy;" align="center">Payment Details</h1>
+		
 		<br> <font size="5" style="font-weight: bold;">
 			<center>
 				<label style="font-size: 25px;">Amount to be paid is
