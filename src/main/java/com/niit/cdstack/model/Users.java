@@ -9,6 +9,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -21,13 +22,18 @@ public class Users {
 	@NotEmpty(message = "Name Cannot be Empty")
 	@Pattern(regexp = "^[A-Za-z\\s]*$", message = "Enter only Letters")
 	private String name;
+	
 	@NotEmpty(message = "Username Cannot be Empty")
 	private String username;
-	@Size(min = 6, max = 10, message = "Password should 6-10 charcters long")
+	
+	@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,10})", message = "Password should contain 1 upercase,1 lowercase,1 digit and special characters and its length must be 6-10 characters")
 	private String password;
+	
 	@NotEmpty(message = "Email Cannot be Empty")
-	@Pattern(regexp = "^(.+)@(.+)$", message = "Enter a valid Email id")
+	@Email(message = "Enter a valid Email id")
+	// @Pattern(regexp = "^(.+)@(.+)$")
 	private String email;
+	
 	private boolean enabled = true;
 
 	private boolean newsletter;
@@ -95,16 +101,16 @@ public class Users {
 	public boolean isEnabled() {
 		return enabled;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
-		Users u=(Users) obj;
-		return (username==u.username);
+		Users u = (Users) obj;
+		return (username == u.username);
 	}
 
 	@Override
 	public String toString() {
-		return  username;
+		return username;
 	}
 
 }

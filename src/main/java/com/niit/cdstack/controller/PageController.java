@@ -42,7 +42,7 @@ public class PageController {
 		return mv;
 	}
 	
-	@RequestMapping(value="${pageContext.request.contextPath}/addquery",method=RequestMethod.POST)
+	@RequestMapping(value="addproblem",method=RequestMethod.POST)
 	public String addQuery(@Valid @ModelAttribute("query")Query q,BindingResult result,Model m)
 	{
 		if(result.hasErrors())
@@ -51,12 +51,12 @@ public class PageController {
 		{
 			qsi.addQuery(q);
 			m.addAttribute("msgs", "Query Submitted Successfully");
-			return "redirect:contact";
+			return "contact";
 		}
 		
 	}
 	
-	@RequestMapping(value="viewquery",method=RequestMethod.GET)
+	@RequestMapping(value="viewproblem",method=RequestMethod.GET)
 	public String viewQuery(Model mv)
 	{
 		List<Query>ql=qsi.viewQuries();
@@ -64,7 +64,7 @@ public class PageController {
 		return "query";
 	}
 	
-	@RequestMapping(value="deletequery",method=RequestMethod.GET)
+	@RequestMapping(value="deleteproblem",method=RequestMethod.GET)
 	public String deleteQuery(@RequestParam("id")String id,Model rea)
 	{
 		qsi.deleteQuery(id);

@@ -89,8 +89,7 @@ label {
 			<br>
 			<h1 align="center" style="color: navy;">QUERY?? JUST ASK US...</h1>
 			<br>
-			<form:form action="addquery"
-				commandName="query" method="post">
+			<form:form action="addproblem" commandName="query" method="post">
 
 				<form:label path="name" style="font-size: 25px"
 					class="control-label col-sm-4">Name:</form:label>
@@ -119,7 +118,6 @@ label {
 				<form:textarea path="query" class="form-control" rows="5" />
 				<font size="5" style="font-weight: bold;"><form:errors
 						path="query" cssStyle="color:maroon"></form:errors></font>
-
 				<br>
 				<div class="container text-center">
 					<button class="btn btn-primary" type="submit"

@@ -88,7 +88,7 @@ h5 {
 				<li><a href="aboutus">ABOUT US</a></li>
 				<li><a href="contact">CONTACT US</a></li>
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<li><a href="viewquery">QUERIES</a></li>
+					<li><a href="viewproblem">QUERIES</a></li>
 				</sec:authorize>
 
 				<li class="dropdown"><a class="dropdown-toggle"
@@ -135,6 +135,7 @@ h5 {
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="view?name=${name}">VIEW PROFILE</a></li>
+							<li><a href="orderstate">TRACK ORDER</a></li>
 						</ul></li>
 					<sec:authorize access="hasRole('ROLE_USER')">
 						<li><a href="viewcart?name=${name}"><span

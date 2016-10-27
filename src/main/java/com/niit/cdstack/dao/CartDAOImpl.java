@@ -35,6 +35,8 @@ public class CartDAOImpl implements CartDAO {
 		ct.setPname(p.getPname());
 		ct.setPrice(price);
 		s.saveOrUpdate(ct);
+		p.setQty(p.getQty()-ct.getQty());
+		s.update(p);
 		t.commit();
 		s.close();
 	}
@@ -56,8 +58,11 @@ public class CartDAOImpl implements CartDAO {
 		Session s=sessionFactory.openSession();
 		Transaction t=s.beginTransaction();
 		Cart c=(Cart) s.load(Cart.class,id);
+		Products p=(Products) s.load(Products.class, c.getPid());
 		if(c!=null)
 			s.delete(c);
+		p.setQty(p.getQty()+c.getQty());
+		s.update(p);
 		t.commit();
 		s.close();
 	}
@@ -81,8 +86,11 @@ public class CartDAOImpl implements CartDAO {
 		Session s=sessionFactory.openSession();
 		Transaction t=s.beginTransaction();
 		String qu="update Cart set qty="+qty+" where pid="+id+"and u_id="+uid;
+		Products pr=(Products) s.load(Products.class, new Integer(id));
 		Query q= s.createQuery(qu);
 		int p=q.executeUpdate();
+		s.update(pr);
+		//p.setQty(p.getQty()-(cr.getQty()-qty));
 		System.out.println("Cart updated rows affected is "+p);
 		t.commit();
 		s.close();
@@ -108,4 +116,25 @@ public class CartDAOImpl implements CartDAO {
 		s.close();
 		return true;
 	}
-}
+
+	@Override
+	public List<Order> getOrderList(String id) {
+		// TODO Auto-generated method stub
+		Session s=sessionFactory.openSession();
+		List<Order>ol=s.createQuery("from Order").list();
+		s.close();
+		return ol;
+	}
+
+	@Override
+	public void updateOrder(Order o) {
+		// TODO Auto-generated method stub
+			Session s=sessionFactory.openSession();
+			Transaction t=s.beginTransaction();
+			s.update(o);
+			t.commit();
+			s.close();
+		}
+		
+	}
+

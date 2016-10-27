@@ -15,7 +15,7 @@ label {
 	<form:form modelAttribute="order">
 		<font size="6" style="font-weight: bold;">
 			<center>
-				<form:label path="paytype" csStyle="font-size: 25px;">Payment successful by ${order.paytype}...Thank you for shopping with us!!!!</form:label>
+				<form:label path="paytype" csStyle="font-size: 25px;">Payment successful by ${order.paytype}. Your Order id is ${order.id}...Thank you for shopping with us!!!!</form:label>
 				<br>
 			</center>
 		</font>

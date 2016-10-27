@@ -1,9 +1,12 @@
 package com.niit.cdstack.webflow;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.swing.text.Document;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -39,8 +42,32 @@ public class WebflowController {
 	}
 
 	public String addOrder(ShippingAddress sa, Order o) {
+		Date od=new Date();
+		Date dd=new Date();
+		Calendar cd=Calendar.getInstance();
+		
+		Date d=new Date();
+		DateFormat df=DateFormat.getDateInstance(DateFormat.SHORT);
+		String t=df.format(d);
+		try {
+			od=df.parse(t);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cd.setTime(od);
+		cd.add(Calendar.DATE, 0);
+		
+		Date dc=cd.getTime();
+		String t1=df.format(dc);
+		try {
+			dd=df.parse(t1);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (o.getPaytype().equalsIgnoreCase("Select Card")) {
-			hs.setAttribute("msge", "Select the Card Type");
+			hs.setAttribute("msgpe", "Select the Card Type");
 			return "not added";
 		} else {
 			boolean b = cdao.addShippingAddress(sa);
@@ -49,10 +76,12 @@ public class WebflowController {
 				return "not added";
 			} else {
 				double price = (double) hs.getAttribute("total");
-				String add = sa.getAddress() + "\n" + sa.getCity() + " "+sa.getPincode() + "\n" + sa.getState();
+				String add = sa.getAddress() + "\n" + sa.getCity() + "	"+sa.getPincode() + "\n" + sa.getState();
 				o.setShippingaddress(add);
 				o.setPrice(price);
 				o.setName(sa.getName());
+				o.setOrdate(od);
+				o.setDeldate(dd);
 				boolean flag = cdao.addOrder(o);
 				if (!flag) {
 					hs.setAttribute("msge", "Order adding unsuccessful");

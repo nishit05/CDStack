@@ -1,5 +1,7 @@
 package com.niit.cdstack.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,29 +13,32 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class Query {
+public class Query implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String q_id;
-	
+
 	@NotEmpty(message = "Name can't be empty")
 	@Pattern(regexp = "^[A-Za-z]*$", message = "Enter only Letters")
 	private String name;
-	
+
 	@NotEmpty(message = "Email Cannot be Empty")
-	@Pattern(regexp = "^(.+)@(.+)$", message = "Enter a valid Email id")
+	@Email(message = "Enter a valid email")
 	private String email;
-	
-	@NotNull(message="Number cannot be empty")
-	@Pattern(regexp="^[789]\\d{9}",message="Enter 10 digit numeric mobile number starting with 7,8 or 9")
-	private long mno;
-	
+
+	@NotEmpty(message = "Number Cannot be Empty")
+	@Pattern(regexp = "^[789]\\d{9}", message = "Enter 10 digit numeric mobile number starting with 7,8 or 9")
+	private String mno;
+
 	@Column(length = 850)
-	@NotEmpty(message="Query can't be empty")
+	@NotEmpty(message = "Query can't be empty")
 	private String query;
 
 	public String getQ_id() {
@@ -68,13 +73,12 @@ public class Query {
 		this.query = query;
 	}
 
-	public long getMno() {
+	public String getMno() {
 		return mno;
 	}
 
-	public void setMno(long mno) {
+	public void setMno(String mno) {
 		this.mno = mno;
 	}
-
 
 }

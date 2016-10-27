@@ -1,5 +1,7 @@
 package com.niit.cdstack.controller;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.cdstack.dao.CartDAO;
 import com.niit.cdstack.model.Cart;
+import com.niit.cdstack.model.Order;
 import com.niit.cdstack.model.Products;
 import com.niit.cdstack.model.Users;
 import com.niit.cdstack.service.CustomerServiceImpl;
@@ -193,5 +196,53 @@ public class CartController {
 		mv.addObject("total", sum);
 		return mv;
 
+	}
+	
+	@RequestMapping(path="orderstate",method=RequestMethod.GET)
+	public ModelAndView trackOrderForm()
+	{
+		Order o=new Order();
+		ModelAndView mv=new ModelAndView("/Cart/orderstate");
+		mv.addObject("order", o);
+		return mv;
+		
+	}
+	
+	@RequestMapping(path="ordertrack",method=RequestMethod.POST)
+	public ModelAndView trackOrder(@Valid @RequestParam("id")String id,@ModelAttribute("order")Order or,BindingResult result)
+	{
+		
+		List<Order>orl=cdao.getOrderList(id);
+		ModelAndView mv=new ModelAndView("/Cart/ordertrack");
+		for(Order ol:orl)
+		{
+			if(ol.getId().equals(id))
+			{
+				
+				Date d=new Date();
+				Date od=ol.getDeldate();
+				DateFormat df=DateFormat.getDateInstance(DateFormat.SHORT);
+				String s1=df.format(od);
+				String s2=df.format(d);
+				System.out.println(s1+" "+s2);
+				if(s1.equalsIgnoreCase(s2))
+				{
+					ol.setStatus(true);
+					cdao.updateOrder(ol);
+					mv.addObject("msg", "The Order for id "+ol.getId()+" is delivered");
+				}
+				else
+				{
+					mv.addObject("msg", "The Order for id "+ol.getId()+" is not delivered");
+				}
+			}
+			else
+			{
+				System.out.println(ol.getId().equals(id));
+				mv.addObject("msg", "Order id does not exist");
+			}
+				
+		}
+		return mv;	
 	}
 }

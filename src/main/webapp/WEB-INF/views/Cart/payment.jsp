@@ -24,7 +24,7 @@ label {
 	<div class="container">
 			<div class="alert-danger">
 				<center>
-					<strong style="font-size: 25px">${msge}</strong>
+					<strong style="font-size: 25px">${msgpe}</strong>
 				</center>
 			</div>
 		</div>

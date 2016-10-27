@@ -9,20 +9,31 @@
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/*form"
 			access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/editp*"
+			access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/edits*"
+			access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/editc*"
+			access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/deletep*"
+			access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/deletes*"
+			access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/deletec*"
+			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/addproducts"
 			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/addcategory"
 			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/addsupplier"
 			access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/addquery"
-			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/supplier"
 			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/category"
 			access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/viewquery"
+		<security:intercept-url pattern="/viewproblem"
 			access="hasRole('ROLE_ADMIN')" />
+			
 		<security:intercept-url pattern="/viewcart"
 			access="hasRole('ROLE_USER')" />
 

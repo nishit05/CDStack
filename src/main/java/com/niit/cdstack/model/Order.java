@@ -1,6 +1,7 @@
 package com.niit.cdstack.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +28,15 @@ public class Order implements Serializable {
 	private double price;
 	
 	private String paytype;
+	
+	@Column(name="Delivery_Date")
+	private Date deldate;
+	
+	@Column(name="Delivered")
+	private boolean status=false;
+	
+	@Column(name="Order_Date")
+	private Date ordate;
 
 	public String getId() {
 		return id;
@@ -66,6 +76,30 @@ public class Order implements Serializable {
 
 	public void setPaytype(String paytype) {
 		this.paytype = paytype;
+	}
+
+	public Date getDeldate() {
+		return deldate;
+	}
+
+	public void setDeldate(Date deldate) {
+		this.deldate = deldate;
+	}
+
+	public Date getOrdate() {
+		return ordate;
+	}
+
+	public void setOrdate(Date ordate) {
+		this.ordate = ordate;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 }
 

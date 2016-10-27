@@ -18,4 +18,6 @@ public interface CartDAO {
 	void updateCart(int qty,int id,int uid);
 	boolean addShippingAddress(ShippingAddress sa);
 	boolean addOrder(Order o);
+	List<Order> getOrderList(String id);
+	void updateOrder(Order o);
 }

@@ -48,29 +48,13 @@
 						<td>${query.mno}</td>
 						<td>${query.query}</td>
 						<td colspan="2"><a class="btn btn-danger" role="button"
-							href="deletequery?id=${query.q_id}"
+							href="deleteproblem?id=${query.q_id}"
 							style="margin-right: 10px" data-toggle="tooltip" title="Delete"><span
 								class="glyphicon glyphicon-remove"> </span></a></td>
 					</tr>
 				</k:forEach>
 			</tbody>
 		</table>
-		<!-- < 					<td colspan="2"><a role="button"  -->
-		<!-- 						href="editproduct?id={{prod.pid}}" class="btn btn-primary" -->
-		<!-- 						style="margin-right: 10px" data-toggle="tooltip" title="Edit"><span -->
-		<!-- 							class="glyphicon glyphicon-pencil"></span></a> <a -->
-		<!-- 						class="btn btn-danger" role="button" -->
-		<!-- 						href="deleteproduct?id={{prod.pid}}" style="margin-right: 10px" -->
-		<!-- 						data-toggle="tooltip" title="Delete"><span -->
-		<!-- 							class="glyphicon glyphicon-remove"></span></a> <a -->
-		<!-- 						class="btn btn-primary" role="button" -->
-		<!-- 						href="productview?id={{prod.pid}}" style="margin-right: 10px"><span -->
-		<!-- 							class="glyphicon glyphicon-eye-open" data-toggle="tooltip" -->
-		<!-- 							title="View"></span></a></td> -->
-
-
-
-
 	</div>
 	<%@include file="footer.jsp"%>
 
