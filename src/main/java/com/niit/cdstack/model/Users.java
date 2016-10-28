@@ -31,7 +31,6 @@ public class Users {
 	
 	@NotEmpty(message = "Email Cannot be Empty")
 	@Email(message = "Enter a valid Email id")
-	// @Pattern(regexp = "^(.+)@(.+)$")
 	private String email;
 	
 	private boolean enabled = true;

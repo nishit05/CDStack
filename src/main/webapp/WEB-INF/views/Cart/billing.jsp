@@ -40,7 +40,7 @@ label {
 			<form:label path="state" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">State</form:label>
 			<form:select path="state" cssClass="form-control"
-				cssStyle="width:60%" onchange="statesel()" id="state">
+				cssStyle="width:60%" onchange="statesel()" id="state" required="true">
 				<form:option value="Select Option"></form:option>
 				<form:option value="Gujarat"></form:option>
 				<form:option value="Kerala"></form:option>
@@ -52,8 +52,7 @@ label {
 
 			<form:label path="city" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">City</form:label>
-			<form:select path="city" cssClass="form-control" cssStyle="width:60%"
-				pattern="^[A-Za-z\\s]*$" title="Enter Only Letters" required="true"
+			<form:select path="city" cssClass="form-control" cssStyle="width:60%" required="true"
 				id="city">
 			</form:select>
 			<br>

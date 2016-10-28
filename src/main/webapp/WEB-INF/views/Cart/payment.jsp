@@ -42,7 +42,7 @@ label {
 			<form:label path="paytype" cssClass="control-label col-sm-4"
 				cssStyle="font-size: 25px">Card Type</form:label>
 			<form:select path="paytype" cssClass="form-control"
-				cssStyle="width:60%" name="paytype">
+				cssStyle="width:60%" name="paytype" required="true">
 				<form:option value="Select Card"></form:option>
 				<form:option value="Credit Card"></form:option>
 				<form:option value="Debit Card"></form:option>

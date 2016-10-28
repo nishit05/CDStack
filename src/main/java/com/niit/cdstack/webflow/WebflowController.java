@@ -42,61 +42,50 @@ public class WebflowController {
 	}
 
 	public String addOrder(ShippingAddress sa, Order o) {
-		Date od=new Date();
-		Date dd=new Date();
-		Calendar cd=Calendar.getInstance();
-		
-		Date d=new Date();
-		DateFormat df=DateFormat.getDateInstance(DateFormat.SHORT);
-		String t=df.format(d);
+		Date od = new Date();
+		Date dd = new Date();
+		Calendar cd = Calendar.getInstance();
+
+		Date d = new Date();
+		DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+		String t = df.format(d);
 		try {
-			od=df.parse(t);
+			od = df.parse(t);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		cd.setTime(od);
 		cd.add(Calendar.DATE, 0);
-		
-		Date dc=cd.getTime();
-		String t1=df.format(dc);
+
+		Date dc = cd.getTime();
+		String t1 = df.format(dc);
 		try {
-			dd=df.parse(t1);
+			dd = df.parse(t1);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (o.getPaytype().equalsIgnoreCase("Select Card")) {
-			hs.setAttribute("msgpe", "Select the Card Type");
-			return "not added";
-		} else {
-			boolean b = cdao.addShippingAddress(sa);
-			if (!b) {
-				hs.setAttribute("msge", "Address adding unsuccessful");
+		boolean b = cdao.addShippingAddress(sa);
+			double price = (double) hs.getAttribute("total");
+			String add = sa.getAddress() + "\n" + sa.getCity() + "	" + sa.getPincode() + "\n" + sa.getState();
+			o.setShippingaddress(add);
+			o.setPrice(price);
+			o.setName(sa.getName());
+			o.setOrdate(od);
+			o.setDeldate(dd);
+			boolean flag = cdao.addOrder(o);
+			if (!flag || !b) {
+				hs.setAttribute("msgpe", "Adding unsuccessful");
 				return "not added";
 			} else {
-				double price = (double) hs.getAttribute("total");
-				String add = sa.getAddress() + "\n" + sa.getCity() + "	"+sa.getPincode() + "\n" + sa.getState();
-				o.setShippingaddress(add);
-				o.setPrice(price);
-				o.setName(sa.getName());
-				o.setOrdate(od);
-				o.setDeldate(dd);
-				boolean flag = cdao.addOrder(o);
-				if (!flag) {
-					hs.setAttribute("msge", "Order adding unsuccessful");
-					return "not added";
-				} else {
-					int i = getUserId();
-					List<Cart> cl = cdao.cartList(i);
-					for (Cart c : cl) {
-						cdao.deleteFromCart(c.getCt_id());
-					}
-					
+				int i = getUserId();
+				List<Cart> cl = cdao.cartList(i);
+				for (Cart c : cl) {
+					cdao.deleteFromCart(c.getCt_id());
 				}
-			}
-			return "added";
-		}
-	}
 
+			}
+		return "added";
+	}
 }

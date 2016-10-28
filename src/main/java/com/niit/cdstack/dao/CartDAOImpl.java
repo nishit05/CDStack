@@ -111,10 +111,16 @@ public class CartDAOImpl implements CartDAO {
 		// TODO Auto-generated method stub
 		Session s=sessionFactory.openSession();
 		Transaction t=s.beginTransaction();
+		if(o.getPaytype().equalsIgnoreCase("Select Card"))
+			return false;
+		else
+		{
 		s.save(o);
 		t.commit();
 		s.close();
 		return true;
+		}
+		
 	}
 
 	@Override
